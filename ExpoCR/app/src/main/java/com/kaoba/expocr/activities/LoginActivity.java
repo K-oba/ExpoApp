@@ -3,6 +3,7 @@ package com.kaoba.expocr.activities;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -29,6 +30,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kaoba.expocr.R;
 
@@ -54,7 +56,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * TODO: remove after connecting to a real authentication system.
      */
     private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo.com:hello", "bar@example.com:world"
+            "jimmi@vila.com:jimmi", "bar@example.com:world"
     };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
@@ -194,7 +196,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             mAuthTask = new UserLoginTask(email, password);
 
-//            mAuthTask.execute((Void) null);
+            mAuthTask.execute((Void) null);
         }
     }
 
@@ -332,7 +334,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
 
             // TODO: register the new account here.
-            return true;
+
+            return false;
         }
 
         @Override
@@ -341,10 +344,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
+                Intent i = new Intent(LoginActivity.this,WelcomeActivity.class);
                 finish();
+                startActivity(i);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
+                Toast.makeText(LoginActivity.this,"Estupido haz algo bien en tu vida",Toast.LENGTH_SHORT).show();
             }
         }
 
