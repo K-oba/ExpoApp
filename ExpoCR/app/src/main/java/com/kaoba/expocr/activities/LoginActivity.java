@@ -350,7 +350,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
-                Toast.makeText(LoginActivity.this,"Estupido haz algo bien en tu vida",Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this,"Invalid user",Toast.LENGTH_LONG).show();
             }
         }
 
