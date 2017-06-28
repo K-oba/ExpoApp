@@ -38,9 +38,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.CreateStandActivity"
+            android:name=".activities.ShowStand"
             android:label="@string/title_activity_create_stand"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

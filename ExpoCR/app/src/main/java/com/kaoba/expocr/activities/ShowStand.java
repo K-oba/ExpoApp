@@ -1,13 +1,9 @@
 package com.kaoba.expocr.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import com.android.volley.AuthFailureError;
@@ -21,7 +17,7 @@ import com.kaoba.expocr.R;
 
 import org.json.JSONObject;
 
-public class CreateStandActivity extends AppCompatActivity {
+public class ShowStand extends AppCompatActivity {
 
     private static final String NAME = "nombre";
     private static final String TYPE = "tipo";
@@ -32,21 +28,8 @@ public class CreateStandActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_stand);
+        setContentView(R.layout.activity_show_stand);
         this.mName  = (EditText) findViewById(R.id.txtName);
-        this.mType = (EditText) findViewById(R.id.txtType);
-        Button createStandButton = (Button) findViewById(R.id.btnCreateStand);
-        createStandButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    makePostRequest();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-        });
     }
     private void makePostRequest() throws Exception {
 
