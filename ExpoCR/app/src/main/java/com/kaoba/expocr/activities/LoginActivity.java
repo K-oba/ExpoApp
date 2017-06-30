@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private static final String TAG = "LoginActivity";
 
-    private static final String api = "localhost:8080/api/usuarios";
+    private static final String api = "http://192.168.100.8:8080/api/usuarios/";
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -330,12 +330,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
-            String url = "http://192.168.0.103:8080/api/usuarios/";
             final Usuario loggedUser = new Usuario();
             RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
 
             JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                    (Request.Method.POST, url.concat("login?correo="+mEmail+"&clave="+mPassword), null, new Response.Listener<JSONObject>(){
+                    (Request.Method.POST, api.concat("login?correo="+mEmail+"&clave="+mPassword), null, new Response.Listener<JSONObject>(){
 
                         @Override
                         public void onResponse(JSONObject response) {
