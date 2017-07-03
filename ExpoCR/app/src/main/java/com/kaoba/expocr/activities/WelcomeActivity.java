@@ -1,5 +1,6 @@
 package com.kaoba.expocr.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,15 +17,20 @@ import android.view.MenuItem;
 
 import com.estimote.coresdk.common.requirements.SystemRequirementsChecker;
 import com.kaoba.expocr.R;
+import com.kaoba.expocr.Session;
 import com.kaoba.expocr.estimote.BeaconAppManager;
 
 public class WelcomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private Session session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        session = new Session(getApplicationContext());
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -72,7 +78,12 @@ public class WelcomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            session.logout();
+            finish();
+            Intent i = new Intent(WelcomeActivity.this,LoginActivity.class);
+            startActivity(i);
+            finish();
             return true;
         }
 

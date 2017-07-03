@@ -39,4 +39,14 @@ public class BeaconAppManager extends Application {
     public boolean isBeaconNotificationsEnabled() {
         return beaconNotificationsEnabled;
     }
+
+    public boolean loadBeaconsByExpo() {
+        //getBeaconsByExpo
+
+     return false;
+    }
+
+    public void beaconDistance(){
+
+    }
 }
