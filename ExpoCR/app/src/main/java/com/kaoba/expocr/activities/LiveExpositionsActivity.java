@@ -1,11 +1,16 @@
 package com.kaoba.expocr.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -21,12 +26,15 @@ import com.kaoba.expocr.R;
 
 import java.util.ArrayList;
 
-public class ListLiveExpositions extends AppCompatActivity {
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
+public class LiveExpositionsActivity extends AppCompatActivity {
 
     private static final String URL = "http://192.168.86.204:8080/api/";
     private static final String NAME = "nombre";
     private static final String ID = "id";
     private static final String TAG = "Live Expo";
+    public static final String EXTRA_MESSAGE = "Stand Id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +43,18 @@ public class ListLiveExpositions extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         executeRequest();
+        ListView listview = (ListView) findViewById(R.id.liveListViewPOJO);
+        assert listview != null;
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                ExpositionPOJO expositionPOJO = (ExpositionPOJO) parent.getItemAtPosition(position);
+                Intent intent = new Intent(LiveExpositionsActivity.this, ShowStandActivity.class);
+                intent.putExtra(EXTRA_MESSAGE, expositionPOJO.getId().toString());
+                startActivity(intent);
+            }
+        });
     }
 
     private void executeRequest() {
@@ -61,7 +81,7 @@ public class ListLiveExpositions extends AppCompatActivity {
 
                         ListView listview = (ListView) findViewById(R.id.liveListViewPOJO);
 
-                        ArrayAdapter<ExpositionPOJO> adapter = new ArrayAdapter<ExpositionPOJO>(ListLiveExpositions.this, android.R.layout.simple_list_item_1, arrayList);
+                        ArrayAdapter<ExpositionPOJO> adapter = new ArrayAdapter<>(LiveExpositionsActivity.this, android.R.layout.simple_list_item_1, arrayList);
                         assert listview != null;
                         listview.setAdapter(adapter);
 

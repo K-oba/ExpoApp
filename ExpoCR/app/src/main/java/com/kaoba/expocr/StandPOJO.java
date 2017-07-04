@@ -4,7 +4,7 @@ package com.kaoba.expocr;
  * Created by Robert on 7/3/17.
  */
 
-public class ExpositionPOJO {
+public class StandPOJO {
     private String name;
     private Long id;
 

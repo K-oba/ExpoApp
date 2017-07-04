@@ -38,12 +38,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.ShowStand"
+            android:name=".activities.ShowStandActivity"
             android:exported="true"
             android:label="@string/title_activity_create_stand"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".activities.ListLiveExpositions"
+            android:name=".activities.LiveExpositionsActivity"
             android:exported="true"
             android:label="@string/title_activity_list_live_exposition"
             android:theme="@style/AppTheme"></activity>
