@@ -1,37 +1,33 @@
 package com.kaoba.expocr.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.kaoba.expocr.ExpositionPOJO;
 import com.kaoba.expocr.R;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ListLiveExpositions extends AppCompatActivity {
 
     private static final String URL = "http://192.168.86.204:8080/api/";
+    private static final String NAME = "nombre";
+    private static final String ID = "id";
+    private static final String TAG = "Live Expo";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,39 +38,41 @@ public class ListLiveExpositions extends AppCompatActivity {
     }
 
     private void executeRequest() {
-        final TextView mTextView = (TextView) findViewById(R.id.listLiveExpoView);
-// Instantiate the RequestQueue.
+        // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
 
-// Request a string response from the provided URL.
+        // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL.concat("liveExposicions?page=0&size=50&sort=id"),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // Display the first 500 characters of the response string.
-                        mTextView.setText("Response is: "+ response.substring(0,500));
-                        ListView listView = (ListView) findViewById(R.id.liveExpoList);
-                        try {
-                            JSONObject jsonObj = new JSONObject(response);
-                            JSONObject jsonData = jsonObj.optJSONObject("data");
-                            JSONArray arrJson = jsonData.getJSONArray("numbers");
-                            String[] arr = new String[arrJson.length()];
-                            for(int i = 0; i < arrJson.length(); i++)
-                                arr[i] = arrJson.getString(i);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                        //mTextView.setText("Response is: "+ response.toString());
+                        Gson gson = new Gson();
+                        JsonParser jsonParser = new JsonParser();
+                        JsonArray jsonArray = (JsonArray) jsonParser.parse(response);
+                        ArrayList<ExpositionPOJO> arrayList = new ArrayList();
+                        for (JsonElement jsonElement : jsonArray) {
+                            ExpositionPOJO expositionPOJO = new ExpositionPOJO();
+                            expositionPOJO.setId(jsonElement.getAsJsonObject().get(ID).getAsLong());
+                            expositionPOJO.setName( jsonElement.getAsJsonObject().get(NAME).getAsString());
+                            arrayList.add(expositionPOJO);
+                            Log.d(TAG, "onResponse: ".concat(expositionPOJO.toString()));
                         }
+
+                        ListView listview = (ListView) findViewById(R.id.liveListViewPOJO);
+
+                        ArrayAdapter<ExpositionPOJO> adapter = new ArrayAdapter<ExpositionPOJO>(ListLiveExpositions.this, android.R.layout.simple_list_item_1, arrayList);
+                        assert listview != null;
+                        listview.setAdapter(adapter);
+
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                mTextView.setText("That didn't work!");
             }
         });
-// Add the request to the RequestQueue.
+        // Add the request to the RequestQueue.
         queue.add(stringRequest);
 
     }
-
-
 }

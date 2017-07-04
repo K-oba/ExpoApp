@@ -12,12 +12,12 @@
     <string name="error_field_required">Este campo es requerido</string>
     <string name="permission_rationale">"Permisos de contactos requeridos para autocompletar correos"
     </string>
-    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="title_activity_welcome">Welcome Activity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="title_activity_create_stand">CreateStand</string>
-    <string name="title_activity_list_live_exposition">ListLiveExposition</string>
+    <string name="title_activity_create_stand">Create Stand</string>
+    <string name="title_activity_list_live_exposition">Live Expositions</string>
 </resources>
