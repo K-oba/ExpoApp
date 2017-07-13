@@ -14,18 +14,23 @@
         tools:layout_editor_absoluteY="86dp"
         tools:layout_editor_absoluteX="19dp" />
 
-    <MultiAutoCompleteTextView
-        android:id="@+id/multiAutoCompleteTextView"
+    <EditText
+        android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MultiAutoCompleteTextView" />
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Titulo"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="354dp"
-        android:layout_height="65dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textMultiLine"
-        tools:layout_editor_absoluteX="15dp"
-        tools:layout_editor_absoluteY="454dp" />
+        android:inputType="textPersonName"
+        android:text="Descripcion"
+        tools:layout_editor_absoluteX="19dp"
+        tools:layout_editor_absoluteY="485dp" />
 </android.support.constraint.ConstraintLayout>
