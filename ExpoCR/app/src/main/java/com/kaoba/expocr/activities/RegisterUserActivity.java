@@ -1,4 +1,4 @@
-package com.kaoba.expocr;
+package com.kaoba.expocr.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -16,6 +16,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.kaoba.expocr.R;
+import com.kaoba.expocr.constants.Constants;
+
 import org.json.JSONObject;
 
 /**
@@ -27,12 +30,16 @@ public class RegisterUserActivity extends Activity {
 
     /***Const variables to validate***/
     private static final String PASSWORD_PATTERN = "((?=.*\\d)(?=.*[a-zA-Z])(?=.*[@#$%*/&^%!]).{4,20})";
-    private static final String URL = "http://10.0.0.147:8080/api/";
 
     /***const variables to json***/
     private static final String NOMBRE = "nombre";
     private static final String CLAVE = "clave";
     private static final String CORREO = "correo";
+
+    private static final int REQUEST_METHOD = 1;
+    private static final String FINAL_PATH = "usuarios";
+
+    private Constants constants;
 
     /**
      * Auxiliar
@@ -48,6 +55,7 @@ public class RegisterUserActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        constants = new Constants();
         setContentView(R.layout.activity_register_user);
         mEmailView = (EditText) findViewById(R.id.txtEmail);
         mPasswordView = (EditText) findViewById(R.id.txtPassword);
@@ -78,59 +86,62 @@ public class RegisterUserActivity extends Activity {
     }
 
     private void makePostRequest() throws Exception {
+        try {
+            // Reset errors.
+            mEmailView.setError(null);
+            mPasswordView.setError(null);
+            mConfirmationView.setError(null);
+            mNameView.setError(null);
+            String email = mEmailView.getText().toString();
+            String password = mPasswordView.getText().toString();
+            String confirmation = mConfirmationView.getText().toString();
+            String name = mNameView.getText().toString();
 
-        // Reset errors.
-        mEmailView.setError(null);
-        mPasswordView.setError(null);
-        mConfirmationView.setError(null);
-        mNameView.setError(null);
-        String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
-        String confirmation = mConfirmationView.getText().toString();
-        String name = mNameView.getText().toString();
-
-        //if not error do the post logic
-        if (isNameValid(name) && isEmailValid(email) && isPasswordValid(password, confirmation)) {
-            JSONObject obj = new JSONObject();
-            obj.put(NOMBRE, name);
-            obj.put(CLAVE, password);
-            obj.put(CORREO, email);
-            executeRequest(obj);
+            //if not error do the post logic
+            if (isNameValid(name) && isEmailValid(email) && isPasswordValid(password, confirmation)) {
+                JSONObject obj = new JSONObject();
+                obj.put(NOMBRE, name);
+                obj.put(CLAVE, password);
+                obj.put(CORREO, email);
+                constants.executePostPutRequest(obj, Volley.newRequestQueue(this), REQUEST_METHOD, FINAL_PATH);
+            }
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
         }
     }
 
-    private void executeRequest(final JSONObject obj) {
-
-        RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest postRequest = new StringRequest(Request.Method.POST, URL.concat("usuarios"),
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        // response
-                        Log.d("Response", response);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // error
-                        Log.d("Error.Response", error.getMessage());
-                    }
-                }
-        ) {
-            @Override
-            public byte[] getBody() throws AuthFailureError {
-                return obj.toString().getBytes();
-            }
-
-            @Override
-            public String getBodyContentType() {
-                return "application/json";
-            }
-        };
-        queue.add(postRequest);
-
-    }
+//    private void executeRequest(final JSONObject obj) {
+//
+//        RequestQueue queue = Volley.newRequestQueue(this);
+//        StringRequest postRequest = new StringRequest(Request.Method.POST, URL.concat("usuarios"),
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        // response
+//                        Log.d("Response", response);
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        // error
+//                        Log.d("Error.Response", error.getMessage());
+//                    }
+//                }
+//        ) {
+//            @Override
+//            public byte[] getBody() throws AuthFailureError {
+//                return obj.toString().getBytes();
+//            }
+//
+//            @Override
+//            public String getBodyContentType() {
+//                return "application/json";
+//            }
+//        };
+//        queue.add(postRequest);
+//
+//    }
 
     private boolean isNameValid(String name) {
         if (name.isEmpty()) {
