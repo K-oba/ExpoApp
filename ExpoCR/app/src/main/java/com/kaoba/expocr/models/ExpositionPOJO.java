@@ -1,4 +1,4 @@
-package com.kaoba.expocr;
+package com.kaoba.expocr.models;
 
 /**
  * Created by Robert on 7/3/17.
