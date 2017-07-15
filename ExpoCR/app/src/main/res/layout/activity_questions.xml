@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kaoba.expocr.activities.QuestionsActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre Expo"
+        tools:layout_editor_absoluteY="32dp"
+        tools:layout_editor_absoluteX="83dp" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="218dp"
+        android:layout_height="204dp"
+        tools:layout_editor_absoluteX="83dp"
+        tools:layout_editor_absoluteY="62dp" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:text="Pregunta"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="318dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviar"
+        tools:layout_editor_absoluteX="83dp"
+        tools:layout_editor_absoluteY="385dp" />
+</android.support.constraint.ConstraintLayout>

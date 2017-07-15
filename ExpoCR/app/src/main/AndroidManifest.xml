@@ -62,7 +62,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.BrochureActivity"></activity>
+        <activity android:name=".activities.BrochureActivity" />
+        <activity android:name=".activities.QuestionsActivity"></activity>
     </application>
 
 </manifest>
