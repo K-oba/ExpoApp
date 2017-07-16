@@ -14,7 +14,9 @@ public class Session {
     public Session(Context context){
         prefs = PreferenceManager.getDefaultSharedPreferences(context);
     }
-
+    public void setExpoId(Long expoId){
+        prefs.edit().putLong("expoId",expoId).apply();
+    }
     public void setUsername(String username){
         prefs.edit().putString("username",username).commit();
     }
@@ -24,6 +26,10 @@ public class Session {
 
     public String getUsername(){
         return prefs.getString("username","");
+    }
+
+    public Long getExpoId(){
+        return prefs.getLong("expoId", 0);
     }
 
     public String getUserId(){

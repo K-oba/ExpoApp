@@ -19,6 +19,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.kaoba.expocr.Session;
 import com.kaoba.expocr.models.ExpositionPOJO;
 import com.kaoba.expocr.R;
 
@@ -48,6 +49,8 @@ public class LiveExpositionsActivity extends AppCompatActivity {
                 ExpositionPOJO expositionPOJO = (ExpositionPOJO) parent.getItemAtPosition(position);
                 Intent intent = new Intent(LiveExpositionsActivity.this, ShowStandActivity.class);
                 intent.putExtra(EXTRA_MESSAGE, expositionPOJO.getId().toString());
+                Session session = new Session(getApplicationContext());
+                session.setExpoId(expositionPOJO.getId());
                 startActivity(intent);
             }
         });
