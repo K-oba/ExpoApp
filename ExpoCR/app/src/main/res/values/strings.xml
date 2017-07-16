@@ -10,6 +10,8 @@
     <string name="error_invalid_password">La contraseña es muy corta</string>
     <string name="error_incorrect_password">Contraseña incorrecta</string>
     <string name="error_field_required">Este campo es requerido</string>
+
+    <string name="network_error">An problem with the network happened, please try again</string>
     <string name="permission_rationale">"Permisos de contactos requeridos para autocompletar correos"
     </string>
     <string name="title_activity_welcome">Welcome Activity</string>

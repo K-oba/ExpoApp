@@ -20,6 +20,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.kaoba.expocr.Session;
+import com.kaoba.expocr.constants.Constants;
 import com.kaoba.expocr.models.ExpositionPOJO;
 import com.kaoba.expocr.R;
 
@@ -27,12 +28,10 @@ import java.util.ArrayList;
 
 public class LiveExpositionsActivity extends AppCompatActivity {
 
-    private static final String URL = "http://192.168.86.235:8080/api/";
     private static final String NAME = "nombre";
     private static final String ID = "id";
     private static final String TAG = "LiveExpo";
     public static final String EXTRA_MESSAGE = "Stand Id";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +57,7 @@ public class LiveExpositionsActivity extends AppCompatActivity {
 
     private void executeRequest() {
         RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL.concat("liveExposicions?page=0&size=50&sort=id"),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.URL.concat("liveExposicions?page=0&size=50&sort=id"),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
