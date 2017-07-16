@@ -47,11 +47,10 @@
             android:exported="true"
             android:label="@string/title_activity_list_live_exposition"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activities.MainActivity" />
         <activity
             android:name=".activities.ShowExpoActivity"
             android:label="@string/title_activity_show_expo"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
