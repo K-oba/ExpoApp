@@ -103,14 +103,6 @@ public class ViewUserActivity extends Activity {
 
                 @Override
                 public void onSuccessList(JSONArray response) {
-                    try {
-                        for(int i = 0; i< response.length(); i++) {
-                            adapter.add(response.getJSONObject(i).getString("nombre"));
-//                            adapter.add(response.getJSONObject(i).getString("descripcion"));
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
                 }
 
                 @Override

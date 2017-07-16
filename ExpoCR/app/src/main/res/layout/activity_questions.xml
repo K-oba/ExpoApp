@@ -6,36 +6,60 @@
     android:layout_height="match_parent"
     tools:context="com.kaoba.expocr.activities.QuestionsActivity">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nombre Expo"
-        tools:layout_editor_absoluteY="32dp"
-        tools:layout_editor_absoluteX="83dp" />
+    <LinearLayout
+        android:layout_width="263dp"
+        android:layout_height="479dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.418"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.161">
 
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="218dp"
-        android:layout_height="204dp"
-        tools:layout_editor_absoluteX="83dp"
-        tools:layout_editor_absoluteY="62dp" />
+        <TextView
+            android:id="@+id/nombreExpo"
+            android:layout_width="371dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.00"/>
 
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:text="Pregunta"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="318dp" />
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enviar"
-        tools:layout_editor_absoluteX="83dp"
-        tools:layout_editor_absoluteY="385dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="261dp"
+        android:layout_height="119dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.97"
+        app:layout_constraintHorizontal_bias="0.413">
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_editor_absoluteY="524dp"
+            tools:text="Tu pregunta" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="136dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="34dp"
+            android:text="Enviar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="96dp" />
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

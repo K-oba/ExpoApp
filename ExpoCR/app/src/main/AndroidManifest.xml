@@ -64,7 +64,13 @@
         </activity>
 
         <activity android:name=".activities.BrochureActivity" />
-        <activity android:name=".activities.QuestionsActivity"></activity>
+        <activity android:name=".activities.QuestionsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".activities.ViewExpoCalendarActivity"
