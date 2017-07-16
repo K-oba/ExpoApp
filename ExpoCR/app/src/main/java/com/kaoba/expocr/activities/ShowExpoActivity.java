@@ -18,6 +18,8 @@ public class ShowExpoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_stand);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         Intent intent = getIntent();
         String message = "Expo ID is ";
         message = message.concat(intent.getStringExtra(LiveExpositionsActivity.EXTRA_MESSAGE));
@@ -26,8 +28,6 @@ public class ShowExpoActivity extends AppCompatActivity {
         Session session = new Session(getApplicationContext());
         message = message.concat(session.getExpoId().toString());
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
     }
 
 }
