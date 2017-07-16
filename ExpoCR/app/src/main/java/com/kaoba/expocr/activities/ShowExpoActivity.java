@@ -28,6 +28,7 @@ public class ShowExpoActivity extends AppCompatActivity {
 
     ArrayAdapter<String> adapter;
     private static final String EXPO_PATH = "exposicions/";
+    private String coordenadas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,10 @@ public class ShowExpoActivity extends AppCompatActivity {
                     ArrayList<String> items = new ArrayList<>();
                     items.add(response.getString("nombre"));
                     items.add(response.getString("descripcion"));
+                    items.add(response.getString("fechaInicio"));
+                    items.add(response.getString("fechaFin"));
+                    coordenadas = response.getString("coordenadas");
+
                     adapter = new ArrayAdapter<>(ShowExpoActivity.this, android.R.layout.simple_list_item_1, items);
                     ListView listview = (ListView) findViewById(R.id.ViewExpoList);
                     assert listview != null;
@@ -73,18 +78,7 @@ public class ShowExpoActivity extends AppCompatActivity {
 
             @Override
             public void onSuccessList(JSONArray response) {
-                try {
-                    for (int i = 0; i < response.length(); i++) {
-                        adapter.add(response.getJSONObject(i).getString("nombre"));
-                        adapter.add(response.getJSONObject(i).getString("descripcion"));
 
-                        ListView listview = (ListView) findViewById(R.id.ViewExpoList);
-                        assert listview != null;
-                        listview.setAdapter(adapter);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
             }
 
             @Override
