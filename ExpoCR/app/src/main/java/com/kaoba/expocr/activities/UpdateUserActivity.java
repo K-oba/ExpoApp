@@ -82,10 +82,10 @@ public class UpdateUserActivity extends Activity {
             constants.executePostPutRequest(obj, queue, REQUEST_METHOD, FINAL_PATH);
             updateUserButton.setVisibility(View.GONE);
             mNameView.setEnabled(false);
-            toast = Toast.makeText(getApplicationContext(), "Update succesfull", Toast.LENGTH_SHORT);
+            toast = Toast.makeText(getApplicationContext(), "Update successful", Toast.LENGTH_SHORT);
 
 //            }else{
-//                toast = Toast.makeText(getApplicationContext(),"An error ocurred",Toast.LENGTH_SHORT);
+//                toast = Toast.makeText(getApplicationContext(),"An error occurred",Toast.LENGTH_SHORT);
 //            }
             toast.show();
         }
