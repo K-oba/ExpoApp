@@ -45,7 +45,7 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
     private Context context;
     Constants constants;
     Session session;
-    private HashMap<String, String> item = new HashMap<String, String>();
+    private long expoId;
 
     private static final String FINAL_PATH = "exposicions";
     private static final String LIVE_EXPO = "liveExposicions";
@@ -139,9 +139,10 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
 
                         for (int i = 0; i < response.length(); i++) {
                             try {
+                                HashMap<String, String> item = new HashMap<String, String>();
                                 item.put("Name", response.getJSONObject(i).getString("nombre"));
                                 item.put("Date",response.getJSONObject(i).getString("fechaFin"));
-                                item.put("Id",response.getJSONObject(i).getString("id"));
+                                expoId = response.getJSONObject(i).getLong("id");
                                 list.add(item);
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -197,9 +198,9 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
                                     long id) {
                 Intent intent = new Intent(context, ShowExpoActivity.class);
 
-                long l = Long.parseLong(item.get("Id"));
-                session.setExpoId(l);
-                intent.putExtra(EXTRA_MESSAGE,  item.get("Id"));
+
+                session.setExpoId(expoId);
+                intent.putExtra(EXTRA_MESSAGE,  Long.toString(expoId));
                 startActivity(intent);
             }
         });

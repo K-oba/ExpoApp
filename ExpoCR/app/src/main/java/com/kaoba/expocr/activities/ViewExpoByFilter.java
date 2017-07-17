@@ -37,11 +37,12 @@ public class ViewExpoByFilter extends AppCompatActivity {
     SearchView searchView;
     ListView listView;
     Session session;
-//    EditText editText;
+    //    EditText editText;
 //    int mYear, mMonth,mDay;
     private String finalFath = "exposicions/findByFilters/";
     private Constants constants;
-    private HashMap<String, String> item = new HashMap<String, String>();
+    private long expoId;
+
     public String getFinalFath() {
         return finalFath;
     }
@@ -58,7 +59,7 @@ public class ViewExpoByFilter extends AppCompatActivity {
 //        editText = (EditText) findViewById(R.id.edittext);
         constants = new Constants();
         listView = (ListView) findViewById(R.id.listView);
-        searchView=(SearchView) findViewById(R.id.searchView);
+        searchView = (SearchView) findViewById(R.id.searchView);
         searchView.setQueryHint("Search View");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -72,8 +73,8 @@ public class ViewExpoByFilter extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if(newText.isEmpty())
-                    setFinalFath("exposicions");
+                if (newText.isEmpty())
+                    setFinalFath("findByFilters");
                 else
                     setFinalFath("exposicions/likeName/");
                 executeRequest(newText);
@@ -109,15 +110,16 @@ public class ViewExpoByFilter extends AppCompatActivity {
                                     long id) {
                 Intent intent = new Intent(getApplicationContext(), ShowExpoActivity.class);
 
-                long l = Long.parseLong(item.get("Id"));
-                session.setExpoId(l);
-                intent.putExtra(EXTRA_MESSAGE,  item.get("Id"));
+
+                session.setExpoId(expoId);
+
+                intent.putExtra(EXTRA_MESSAGE, Long.toString(expoId));
                 startActivity(intent);
             }
         });
     }
 
-    private void executeRequest(String name){
+    private void executeRequest(String name) {
         constants.executeGetListRequest(new VolleyCallBack() {
             @Override
             public void onSuccess(JSONObject response) {
@@ -130,20 +132,21 @@ public class ViewExpoByFilter extends AppCompatActivity {
 
                 for (int i = 0; i < response.length(); i++) {
                     try {
+                        HashMap<String, String> item = new HashMap<String, String>();
                         item.put("Name", response.getJSONObject(i).getString("nombre"));
-                        item.put("Date",response.getJSONObject(i).getString("fechaFin"));
-                        item.put("Id", response.getJSONObject(i).getString("id"));
+                        item.put("Date", response.getJSONObject(i).getString("fechaFin"));
+                        expoId = response.getJSONObject(i).getLong("id");
                         list.add(item);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                String[] from = new String[] { "Name", "Date" };
+                String[] from = new String[]{"Name", "Date"};
 
-                int[] to = new int[] { android.R.id.text1, android.R.id.text2 };
+                int[] to = new int[]{android.R.id.text1, android.R.id.text2};
 
                 int nativeLayout = android.R.layout.two_line_list_item;
-                listView.setAdapter(new SimpleAdapter(getApplicationContext(), list, nativeLayout , from, to));
+                listView.setAdapter(new SimpleAdapter(getApplicationContext(), list, nativeLayout, from, to));
             }
 
             @Override
