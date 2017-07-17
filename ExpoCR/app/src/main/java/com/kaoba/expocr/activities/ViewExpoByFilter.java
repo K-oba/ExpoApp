@@ -15,6 +15,7 @@ import android.widget.SimpleAdapter;
 
 import com.android.volley.toolbox.Volley;
 import com.kaoba.expocr.R;
+import com.kaoba.expocr.Session;
 import com.kaoba.expocr.constants.Constants;
 import com.kaoba.expocr.constants.VolleyCallBack;
 
@@ -35,6 +36,7 @@ public class ViewExpoByFilter extends AppCompatActivity {
 
     SearchView searchView;
     ListView listView;
+    Session session;
 //    EditText editText;
 //    int mYear, mMonth,mDay;
     private String finalFath = "exposicions/findByFilters/";
@@ -100,13 +102,16 @@ public class ViewExpoByFilter extends AppCompatActivity {
 //                mDatePicker.setTitle("Select date");
 //                mDatePicker.show();  }
 //        });
-
+        session = new Session(this);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
                 Intent intent = new Intent(getApplicationContext(), ShowExpoActivity.class);
-                intent.putExtra(EXTRA_MESSAGE, item.get("Id").toString());
+
+                long l = Long.parseLong(item.get("Id"));
+                session.setExpoId(l);
+                intent.putExtra(EXTRA_MESSAGE,  item.get("Id"));
                 startActivity(intent);
             }
         });

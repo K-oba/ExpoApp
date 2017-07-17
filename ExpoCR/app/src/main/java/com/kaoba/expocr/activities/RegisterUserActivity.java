@@ -50,7 +50,7 @@ public class RegisterUserActivity extends AppCompatActivity {
      * Auxiliar
      **/
     private static boolean isOk = false;
-    private static final String PASSWORD_FORMAT = "Must contains one digit 0-9, One character, One special symbol. At least 4 digits.";
+    private static final String PASSWORD_FORMAT = "Must contain one digit 0-9, One character, One special symbol. At least 4 digits.";
 
     private EditText mNameView;
     private EditText mEmailView;

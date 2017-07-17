@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.android.volley.toolbox.Volley;
 import com.kaoba.expocr.R;
+import com.kaoba.expocr.Session;
 import com.kaoba.expocr.constants.Constants;
 import com.kaoba.expocr.constants.VolleyCallBack;
 import com.roomorama.caldroid.CaldroidFragment;
@@ -43,6 +44,7 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
     private CaldroidFragment dialogCaldroidFragment;
     private Context context;
     Constants constants;
+    Session session;
     private HashMap<String, String> item = new HashMap<String, String>();
 
     private static final String FINAL_PATH = "exposicions";
@@ -187,13 +189,16 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
 
         // Setup Caldroid
         caldroidFragment.setCaldroidListener(listener);
-
+         session = new Session(this);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
-                Intent intent = new Intent(getApplicationContext(), ShowExpoActivity.class);
-                intent.putExtra(EXTRA_MESSAGE, item.get("Id").toString());
+                Intent intent = new Intent(context, ShowExpoActivity.class);
+
+                long l = Long.parseLong(item.get("Id"));
+                session.setExpoId(l);
+                intent.putExtra(EXTRA_MESSAGE,  item.get("Id"));
                 startActivity(intent);
             }
         });
