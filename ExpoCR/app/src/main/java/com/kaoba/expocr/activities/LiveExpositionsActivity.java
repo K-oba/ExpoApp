@@ -31,7 +31,7 @@ public class LiveExpositionsActivity extends AppCompatActivity {
     private static final String NAME = "nombre";
     private static final String ID = "id";
     private static final String TAG = "LiveExpo";
-    public static final String EXTRA_MESSAGE = "Stand Id";
+    public static final String EXTRA_MESSAGE = "Expo Id";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
