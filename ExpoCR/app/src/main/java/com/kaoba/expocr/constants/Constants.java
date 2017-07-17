@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class Constants {
 
     /***Const variables to validate***/
-    public static final String URL = "http://192.168.1.56:8080/api/";
+    public static final String URL = "http://10.0.0.147:8080/api/";
     /**
      *http://10.0.0.147:8080
      * http://192.168.40.207:8080
@@ -39,7 +39,8 @@ public class Constants {
      * @param finalPath     entity to execute (usuarios, stands, etc);
      * @return
      */
-    public void executePostPutRequest(final JSONObject obj, RequestQueue q, int requestMethod, String finalPath) throws Exception {
+    public String executePostPutRequest(final JSONObject obj, RequestQueue q, int requestMethod, String finalPath) throws Exception {
+        final String[] s = {""};
         try {
             RequestQueue queue = q;
 
@@ -47,13 +48,13 @@ public class Constants {
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            Log.d("Response", response);
+                            s[0] = response;
                         }
                     },
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Log.d("Response", error.getMessage());
+                            s[0] = error.getMessage().toString();
                         }
                     }
             ) {
@@ -64,13 +65,14 @@ public class Constants {
 
                 @Override
                 public String getBodyContentType() {
-                    return "application/json";
+                    return "application/json; charset=utf-8";
                 }
             };
             queue.add(postRequest);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
+        return s[0];
     }
 
     public void executeGetRequest(final VolleyCallBack callBack ,RequestQueue q, String finalPath) {

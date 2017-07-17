@@ -39,7 +39,7 @@ public class ShowExpoActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Intent intent = getIntent();
         String message = "Expo ID is ";
-        message = message.concat(intent.getStringExtra(LiveExpositionsActivity.EXTRA_MESSAGE));
+//        message = message.concat(intent.getStringExtra(LiveExpositionsActivity.EXTRA_MESSAGE));
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         message = "Expo ID from session ";
         Session session = new Session(getApplicationContext());
