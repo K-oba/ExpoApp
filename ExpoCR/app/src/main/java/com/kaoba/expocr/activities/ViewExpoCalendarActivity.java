@@ -47,7 +47,8 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
     Session session;
     private HashMap<String, String> item = new HashMap<String, String>();
 
-    private static final String FINAL_PATH = "liveExposicions";
+    private static final String FINAL_PATH = "exposicions";
+    private static final String LIVE_EXPO = "liveExposicions";
 
     private void setCustomResourceForDates() {
         final SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
@@ -77,7 +78,7 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
                 public void onError(String error) {
 
                 }
-            }, Volley.newRequestQueue(getApplicationContext()), FINAL_PATH);
+            }, Volley.newRequestQueue(getApplicationContext()), LIVE_EXPO);
         }
 
     }
@@ -140,7 +141,7 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
                             try {
                                 item.put("Name", response.getJSONObject(i).getString("nombre"));
                                 item.put("Date",response.getJSONObject(i).getString("fechaFin"));
-//                                item.put("Id",response.getJSONObject(i).getString("id"));
+                                item.put("Id",response.getJSONObject(i).getString("id"));
                                 list.add(item);
                             } catch (Exception e) {
                                 e.printStackTrace();
