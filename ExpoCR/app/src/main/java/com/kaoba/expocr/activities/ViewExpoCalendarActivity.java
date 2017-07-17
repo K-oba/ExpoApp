@@ -3,17 +3,21 @@ package com.kaoba.expocr.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.android.volley.toolbox.Volley;
 import com.kaoba.expocr.R;
+import com.kaoba.expocr.Session;
 import com.kaoba.expocr.constants.Constants;
 import com.kaoba.expocr.constants.VolleyCallBack;
 import com.roomorama.caldroid.CaldroidFragment;
@@ -28,6 +32,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 /**
  * Created by Antoni Ramirez on 21/6/2017.
  */
@@ -38,8 +44,11 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
     private CaldroidFragment dialogCaldroidFragment;
     private Context context;
     Constants constants;
+    Session session;
+    private long expoId;
 
     private static final String FINAL_PATH = "exposicions";
+    private static final String LIVE_EXPO = "liveExposicions";
 
     private void setCustomResourceForDates() {
         final SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
@@ -69,7 +78,7 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
                 public void onError(String error) {
 
                 }
-            }, Volley.newRequestQueue(getApplicationContext()), FINAL_PATH);
+            }, Volley.newRequestQueue(getApplicationContext()), LIVE_EXPO);
         }
 
     }
@@ -78,6 +87,8 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expo_calendar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         constants = new Constants();
 
         final SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
@@ -131,6 +142,7 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
                                 HashMap<String, String> item = new HashMap<String, String>();
                                 item.put("Name", response.getJSONObject(i).getString("nombre"));
                                 item.put("Date",response.getJSONObject(i).getString("fechaFin"));
+                                expoId = response.getJSONObject(i).getLong("id");
                                 list.add(item);
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -179,6 +191,19 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
 
         // Setup Caldroid
         caldroidFragment.setCaldroidListener(listener);
+         session = new Session(this);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                Intent intent = new Intent(context, ShowExpoActivity.class);
+
+
+                session.setExpoId(expoId);
+                intent.putExtra(EXTRA_MESSAGE,  Long.toString(expoId));
+                startActivity(intent);
+            }
+        });
 
 
     }
