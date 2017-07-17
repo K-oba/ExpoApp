@@ -8,6 +8,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.kaoba.expocr.R;
 import android.app.Activity;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.kaoba.expocr.constants.Constants;
@@ -17,6 +19,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
 public class QuestionsActivity extends Activity {
     private static final String CHARLA_PATH = "charlas/";
     private static final String EXPO_PATH = "exposicions/";
@@ -24,13 +28,23 @@ public class QuestionsActivity extends Activity {
     private JSONArray preguntas;
 
     private TextView expoName;
+    private ListView questionsList;
+    ArrayAdapter<String> adapter;
+    HashMap<String, Object> listItem;
+    private String[] requestList = new String[]{};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
         constants = new Constants();
+        expoName = (TextView) findViewById(R.id.nombreExpo);
+        questionsList = (ListView) findViewById(R.id.listViewQuestions);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2);
+        questionsList.setAdapter(adapter);
         try {
             getExpo();
+            getCharla();
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -43,9 +57,9 @@ public class QuestionsActivity extends Activity {
             public void onSuccess(JSONObject response) {
                 try {
                     preguntas = response.getJSONArray("preguntas");
-//                    titulo.setText(response.getString("titulo"));
-//                    descripcion.setText(response.getString("descripcion"));
-//                    image.setImageURI(Uri.parse(response.getString("urlImagen")));
+                    for (int i =0;i<preguntas.length();i++){
+                        //adapter.add(preguntas.getJSONObject(i).getString("pregunta"));
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -64,8 +78,7 @@ public class QuestionsActivity extends Activity {
 
     public void getExpo() throws JSONException {
         final RequestQueue queue = Volley.newRequestQueue(this);
-        expoName = (TextView) findViewById(R.id.nombreExpo);
-        constants.executeGetListRequest(new VolleyCallBack() {
+        constants.executeGetRequest(new VolleyCallBack() {
             @Override
             public void onSuccess(JSONObject response) {
                 try {

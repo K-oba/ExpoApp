@@ -21,10 +21,12 @@
             android:id="@+id/nombreExpo"
             android:layout_width="371dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.00"/>
+            android:layout_weight="0.00"
+            android:textSize="14sp"
+            tools:text="Nombre Expo" />
 
         <ListView
-            android:id="@+id/listView"
+            android:id="@+id/listViewQuestions"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
