@@ -1,8 +1,6 @@
 package com.kaoba.expocr.constants;
 
-import android.app.Activity;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -24,7 +22,7 @@ import org.json.JSONObject;
 public class Constants {
 
     /***Const variables to validate***/
-    public static final String URL = "http://192.168.86.235:8080/api/";
+    public static final String URL = "http://10.202.149.132:8080/api/";
     /**
      *http://10.0.0.147:8080
      * http://192.168.40.207:8080
