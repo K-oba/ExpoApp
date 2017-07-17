@@ -1,7 +1,10 @@
 package com.kaoba.expocr.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
@@ -21,11 +24,13 @@ import com.kaoba.expocr.constants.Constants;
 
 import org.json.JSONObject;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 /**
  * Created by antonirm on 11/6/2017.
  */
 
-public class RegisterUserActivity extends Activity {
+public class RegisterUserActivity extends AppCompatActivity {
 
 
     /***Const variables to validate***/
@@ -62,6 +67,8 @@ public class RegisterUserActivity extends Activity {
         mNameView = (EditText) findViewById(R.id.txtName);
         mConfirmationView = (EditText) findViewById(R.id.txtConfirmation);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         Button createUserButton = (Button) findViewById(R.id.btnCreate);
         createUserButton.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +111,9 @@ public class RegisterUserActivity extends Activity {
                 obj.put(CLAVE, password);
                 obj.put(CORREO, email);
                 constants.executePostPutRequest(obj, Volley.newRequestQueue(this), REQUEST_METHOD, FINAL_PATH);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                intent.putExtra(EXTRA_MESSAGE, "");
+                startActivity(intent);
             }
         }catch (Exception e){
             throw new Exception(e.getMessage());

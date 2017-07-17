@@ -64,7 +64,7 @@ public class Constants {
 
                 @Override
                 public String getBodyContentType() {
-                    return "application/json";
+                    return "application/json; charset=utf-8";
                 }
             };
             queue.add(postRequest);
