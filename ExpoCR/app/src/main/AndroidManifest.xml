@@ -40,7 +40,7 @@
         <activity
             android:name=".activities.ShowStandActivity"
             android:exported="true"
-            android:label="@string/title_activity_create_stand"
+            android:label="@string/title_activity_show_stand"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.LiveExpositionsActivity"
@@ -52,5 +52,4 @@
             android:label="@string/title_activity_show_expo"
             android:theme="@style/AppTheme" />
     </application>
-
 </manifest>
