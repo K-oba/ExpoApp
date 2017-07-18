@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.android.volley.Request;
@@ -25,6 +26,7 @@ import com.kaoba.expocr.models.ExpositionPOJO;
 import com.kaoba.expocr.R;
 
 import java.util.ArrayList;
+import com.squareup.picasso.Picasso;
 
 public class LiveExpositionsActivity extends AppCompatActivity {
 
@@ -36,11 +38,15 @@ public class LiveExpositionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_live_exposition);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
         executeRequest();
         ListView listview = (ListView) findViewById(R.id.liveListViewPOJO);
         assert listview != null;
+        ImageView image = (ImageView) findViewById(R.id.imageView4);
+        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500393003/beacon-illustration-1024x673_bfpl6y.jpg").into(image);
+        ImageView logo = (ImageView) findViewById(R.id.imageView6);
+        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500361962/expocr-vale_720_mnb6qb.png").into(logo);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
@@ -73,7 +79,8 @@ public class LiveExpositionsActivity extends AppCompatActivity {
                         }
                         Log.d(TAG, "executeRequest");
                         ListView listview = (ListView) findViewById(R.id.liveListViewPOJO);
-
+                        //ImageView image = (ImageView) findViewById(R.id.imageView5);
+                        //Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500361962/expocr-vale_720_mnb6qb.png").into(image);
                         ArrayAdapter<ExpositionPOJO> adapter = new ArrayAdapter<>(LiveExpositionsActivity.this, android.R.layout.simple_list_item_1, arrayList);
                         assert listview != null;
                         listview.setAdapter(adapter);
