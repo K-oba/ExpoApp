@@ -29,6 +29,6 @@
     <string name="error_welcome_screen_permission">Permission not accepted</string>
     <string name="burger_name">Expo CR</string>
     <string name="calendar">calendar</string>
-    <string name="expo_list">Expo List</string>
+    <string name="expo_list">View Expos</string>
 
 </resources>

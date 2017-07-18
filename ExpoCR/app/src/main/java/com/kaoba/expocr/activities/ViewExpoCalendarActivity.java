@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.android.volley.toolbox.Volley;
 import com.kaoba.expocr.R;
@@ -166,25 +165,25 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
 
             @Override
             public void onChangeMonth(int month, int year) {
-                String text = "month: " + month + " year: " + year;
-                Toast.makeText(getApplicationContext(), text,
-                        Toast.LENGTH_SHORT).show();
+//                String text = "month: " + month + " year: " + year;
+//                Toast.makeText(getApplicationContext(), text,
+//                        Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onLongClickDate(Date date, View view) {
-                Toast.makeText(getApplicationContext(),
-                        "Long click " + formatter.format(date),
-                        Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(),
+//                        "Long click " + formatter.format(date),
+//                        Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onCaldroidViewCreated() {
-                if (caldroidFragment.getLeftArrowButton() != null) {
-                    Toast.makeText(getApplicationContext(),
-                            "Caldroid view is created", Toast.LENGTH_SHORT)
-                            .show();
-                }
+//                if (caldroidFragment.getLeftArrowButton() != null) {
+//                    Toast.makeText(getApplicationContext(),
+//                            "Caldroid view is created", Toast.LENGTH_SHORT)
+//                            .show();
+//                }
             }
 
         };
@@ -192,6 +191,7 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
         // Setup Caldroid
         caldroidFragment.setCaldroidListener(listener);
          session = new Session(this);
+        assert listView != null;
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
