@@ -27,7 +27,7 @@ import static com.kaoba.expocr.activities.LiveExpositionsActivity.EXTRA_MESSAGE;
 public class Constants {
 
     /***Const variables to validate***/
-    public static final String URL = "http://192.168.1.52:8080/api/";
+    public static final String URL = "http://192.168.43.189:8080/api/";
     /**
      *http://10.0.0.147:8080
      * http://192.168.40.207:8080
