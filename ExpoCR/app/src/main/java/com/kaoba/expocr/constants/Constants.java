@@ -1,6 +1,8 @@
 package com.kaoba.expocr.constants;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -12,9 +14,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.kaoba.expocr.activities.LoginActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import static com.estimote.coresdk.common.config.EstimoteSDK.getApplicationContext;
+import static com.kaoba.expocr.activities.LiveExpositionsActivity.EXTRA_MESSAGE;
 
 /**
  * Created by antonirm on 18/6/2017.
@@ -39,8 +45,7 @@ public class Constants {
      * @param finalPath     entity to execute (usuarios, stands, etc);
      * @return
      */
-    public String executePostPutRequest(final JSONObject obj, RequestQueue q, int requestMethod, String finalPath) throws Exception {
-        final String[] s = {""};
+    public void executePostPutRequest(final JSONObject obj, RequestQueue q, int requestMethod, String finalPath, final Context context, final int activity) throws Exception {
         try {
             RequestQueue queue = q;
 
@@ -48,13 +53,18 @@ public class Constants {
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            s[0] = response;
+                            if(activity == 1){
+                                Intent intent = new Intent(context, LoginActivity.class);
+                                intent.putExtra(EXTRA_MESSAGE, "");
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                context.startActivity(intent);
+                            }
                         }
                     },
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            s[0] = error.getMessage().toString();
+                            Toast.makeText(context,error.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
             ) {
@@ -72,10 +82,9 @@ public class Constants {
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-        return s[0];
     }
 
-    public void executeGetRequest(final VolleyCallBack callBack ,RequestQueue q, String finalPath) {
+    public void executeGetRequest(final VolleyCallBack callBack, RequestQueue q, String finalPath) {
         RequestQueue queue = q;
         // prepare the Request
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, URL.concat(finalPath), null,
@@ -96,7 +105,7 @@ public class Constants {
         queue.add(getRequest);
     }
 
-    public void executeGetListRequest(final VolleyCallBack callBack ,RequestQueue q, String finalPath) {
+    public void executeGetListRequest(final VolleyCallBack callBack, RequestQueue q, String finalPath) {
         RequestQueue queue = q;
         // prepare the Request
         JsonArrayRequest getRequest = new JsonArrayRequest(Request.Method.GET, URL.concat(finalPath), null,

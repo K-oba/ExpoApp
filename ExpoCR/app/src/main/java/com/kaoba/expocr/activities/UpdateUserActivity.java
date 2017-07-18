@@ -1,6 +1,7 @@
 package com.kaoba.expocr.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,6 +32,7 @@ public class UpdateUserActivity extends Activity {
 
     private static final int REQUEST_METHOD = 2;
     private static final String FINAL_PATH = "usuarios";
+    private static final int UPDATE_ACTIVITY = 2;
 
     private Constants constants;
 
@@ -79,7 +81,7 @@ public class UpdateUserActivity extends Activity {
             obj.put(CORREO, "antoniramirezm@gmail.com");
             obj.put(CLAVE, "antoniramirezzm@gmail.com");
             RequestQueue queue = Volley.newRequestQueue(this);
-            constants.executePostPutRequest(obj, queue, REQUEST_METHOD, FINAL_PATH);
+            constants.executePostPutRequest(obj, queue, REQUEST_METHOD, FINAL_PATH, getApplicationContext(),UPDATE_ACTIVITY);
             updateUserButton.setVisibility(View.GONE);
             mNameView.setEnabled(false);
             toast = Toast.makeText(getApplicationContext(), "Update successful", Toast.LENGTH_SHORT);
