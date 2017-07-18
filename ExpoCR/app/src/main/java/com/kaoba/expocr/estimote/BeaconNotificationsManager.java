@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.estimote.coresdk.observation.region.beacon.BeaconRegion;
 import com.estimote.coresdk.service.BeaconManager;
+import com.kaoba.expocr.activities.BrochureActivity;
 import com.kaoba.expocr.activities.WelcomeActivity;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class BeaconNotificationsManager {
     private List<BeaconRegion> regionsToMonitor = new ArrayList<>();
     private HashMap<String, String> enterMessages = new HashMap<>();
     private HashMap<String, String> exitMessages = new HashMap<>();
+    private HashMap<String, String> standIds = new HashMap<>();
 
     private Context context;
 
@@ -37,19 +39,22 @@ public class BeaconNotificationsManager {
             @Override
             public void onEnteredRegion(BeaconRegion region, List<com.estimote.coresdk.recognition.packets.Beacon> list) {
                 Log.d(TAG, "onEnteredRegion: " + region.getIdentifier());
-                String message = enterMessages.get(region.getIdentifier());
-                if (message != null) {
-                    showNotification(message);
+                String titulo = enterMessages.get(region.getIdentifier());
+                String descripcion = exitMessages.get(region.getIdentifier());
+                String idstand = standIds.get(region.getIdentifier());
+                if (titulo != null) {
+                    if (descripcion == null) descripcion = "see more";
+                    showNotification(titulo,descripcion,idstand);
                 }
             }
 
             @Override
             public void onExitedRegion(BeaconRegion region) {
                 Log.d(TAG, "onExitedRegion: " + region.getIdentifier());
-                String message = exitMessages.get(region.getIdentifier());
-                if (message != null) {
-                    showNotification(message);
-                }
+//                String message = exitMessages.get(region.getIdentifier());
+//                if (message != null) {
+//                    showNotification(message);
+//                }
             }
         });
 
@@ -82,15 +87,16 @@ public class BeaconNotificationsManager {
         });
     }
 
-    private void showNotification(String message) {
-        Intent resultIntent = new Intent(context, WelcomeActivity.class);
+    private void showNotification(String titulo, String descripcion, String idStand) {
+        Intent resultIntent = new Intent(context, BrochureActivity.class);
+        resultIntent.putExtra("idStand",idStand);
         PendingIntent resultPendingIntent = PendingIntent.getActivity(
                 context, 0, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setSmallIcon(android.R.drawable.ic_dialog_info)
-                .setContentTitle("Beacon Notifications")
-                .setContentText(message)
+                .setContentTitle(titulo)
+                .setContentText(descripcion)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setContentIntent(resultPendingIntent);
@@ -98,5 +104,14 @@ public class BeaconNotificationsManager {
         NotificationManager notificationManager =
                 (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(notificationID++, builder.build());
+    }
+
+    public void addNotification(Beacon beacon, String nombre, String tipo, String standId) {
+        BeaconRegion region = beacon.toBeaconRegion();
+        enterMessages.put(region.getIdentifier(), nombre);
+        exitMessages.put(region.getIdentifier(), tipo);
+        standIds.put(region.getIdentifier(),standId);
+        regionsToMonitor.add(region);
+
     }
 }

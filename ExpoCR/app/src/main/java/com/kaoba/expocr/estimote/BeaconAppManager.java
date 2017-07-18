@@ -45,15 +45,15 @@ public class BeaconAppManager extends Application {
     public void enableBeaconNotifications() {
         if (beaconNotificationsEnabled) { return; }
 
-        BeaconNotificationsManager beaconNotificationsManager = new BeaconNotificationsManager(this);
+//        BeaconNotificationsManager beaconNotificationsManager = new BeaconNotificationsManager(this);
 
 //        beaconNotificationsManager.addNotification(
 //                new Beacon("B9407F30-F5F8-466E-AFF9-25556B57FE6D", 21323, 17231),
 //                "Hello, world.",
 //                "Goodbye, world.");
         try {
-            setBeaconByStand(beaconNotificationsManager);
-            beaconNotificationsManager.startMonitoring();
+            setBeaconByStand();
+//            beaconNotificationsManager.startMonitoring();
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -66,26 +66,28 @@ public class BeaconAppManager extends Application {
         return beaconNotificationsEnabled;
     }
 
-    public void setBeaconByStand(final BeaconNotificationsManager beaconNotificationsManager) throws JSONException {
+    public void setBeaconByStand() throws JSONException {
         Constants constants = new Constants();
         final RequestQueue queue = Volley.newRequestQueue(this);
         constants.executeGetRequest(new VolleyCallBack() {
             @Override
             public void onSuccess(JSONObject response) {
                 try {
+                    BeaconNotificationsManager beaconNotificationsManager = new BeaconNotificationsManager(getApplicationContext());
+
                     JSONObject object;
                     JSONArray jsonArray = response.getJSONArray("stands");
                     for(int i = 0; i < jsonArray.length(); i++){
                         object = jsonArray.getJSONObject(i);
 
                         String beaconsIds[] = object.getJSONObject("beacon").getString("uuid").split(":");
-
-
                         beaconNotificationsManager.addNotification(
-                                new Beacon(beaconsIds[0],Integer.parseInt(beaconsIds[1]),Integer.parseInt(beaconsIds[2])),"","");
+                                new Beacon(beaconsIds[0],Integer.parseInt(beaconsIds[1]),Integer.parseInt(beaconsIds[2])),object.getString("nombre"),object.getString("tipo"),object.getString("id"));
 
-                        Log.d("Hola",object.getJSONObject("beacon").getString("uuid"));
+                        Log.d("Ne",object.getJSONObject("beacon").getString("uuid"));
                     }
+
+                    beaconNotificationsManager.startMonitoring();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
