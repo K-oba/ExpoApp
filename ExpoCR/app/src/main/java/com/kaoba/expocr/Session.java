@@ -4,6 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.kaoba.expocr.models.BeaconPOJO;
+
+import java.util.ArrayList;
+
 /**
  * Created by Jimmi on 02/07/2017.
  */
@@ -39,4 +43,6 @@ public class Session {
     public void logout(){
         prefs.edit().clear().commit();
     }
+
+    public void setBeaconsList(ArrayList<BeaconPOJO> beaconsList){}
 }
