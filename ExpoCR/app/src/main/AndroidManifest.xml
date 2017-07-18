@@ -27,16 +27,11 @@
         </activity>
         <activity
             android:name=".activities.WelcomeActivity"
-            android:label="@string/title_activity_welcome">
-        </activity>
+            android:exported="true"
+            android:label="@string/title_activity_welcome" />
         <activity
             android:name=".activities.RegisterUserActivity"
-            android:label="@string/app_name">
-        </activity>
-        <activity
-            android:name=".activities.ViewExpoCalendarActivity"
-            android:label="@string/app_name">
-        </activity>
+            android:label="@string/app_name" />
         <activity android:name=".activities.BrochureActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -56,11 +51,12 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.ViewExpoCalendarActivity"
-            android:label="@string/app_name">
-        </activity>
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.ViewExpoByFilter"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -71,13 +67,10 @@
             android:name=".activities.ShowExpoActivity"
             android:label="@string/title_activity_show_expo"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activities.ListStandActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity
+            android:name=".activities.ListStandActivity"
+            android:label="@string/title_activity_stand_list"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

@@ -1,9 +1,7 @@
 package com.kaoba.expocr.constants;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -19,7 +17,6 @@ import com.kaoba.expocr.activities.LoginActivity;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import static com.estimote.coresdk.common.config.EstimoteSDK.getApplicationContext;
 import static com.kaoba.expocr.activities.LiveExpositionsActivity.EXTRA_MESSAGE;
 
 /**
@@ -30,7 +27,7 @@ import static com.kaoba.expocr.activities.LiveExpositionsActivity.EXTRA_MESSAGE;
 public class Constants {
 
     /***Const variables to validate***/
-    public static final String URL = "http://192.168.100.9:8080/api/";
+    public static final String URL = "http://192.168.86.235:8080/api/";
     /**
      *http://10.0.0.147:8080
      * http://192.168.40.207:8080
