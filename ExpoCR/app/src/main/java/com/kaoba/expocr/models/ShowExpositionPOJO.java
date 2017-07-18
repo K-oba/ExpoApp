@@ -4,14 +4,15 @@ package com.kaoba.expocr.models;
  * Created by Robert on 7/3/17.
  */
 
-public class StandPOJO {
+public class ShowExpositionPOJO {
     private String name;
     private Long id;
-    private Long beaconId;
+    private String desription;
 
     @Override
     public String toString() {
-        return name;
+        String s = (name);
+        return s;
     }
     public String getName() {
         return name;
@@ -28,9 +29,5 @@ public class StandPOJO {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public void setBeaconId(Long beaconId){this.beaconId = beaconId;}
-
-    public Long getBeaconId(){return beaconId;}
 
 }
