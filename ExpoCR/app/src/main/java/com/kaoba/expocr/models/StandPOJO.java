@@ -7,6 +7,7 @@ package com.kaoba.expocr.models;
 public class StandPOJO {
     private String name;
     private Long id;
+    private Long beaconId;
 
     @Override
     public String toString() {
@@ -27,5 +28,9 @@ public class StandPOJO {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public void setBeaconId(Long beaconId){this.beaconId = beaconId;}
+
+    public Long getBeaconId(){return beaconId;}
 
 }
