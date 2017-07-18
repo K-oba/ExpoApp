@@ -30,14 +30,16 @@
             android:orientation="vertical">
 
             <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="338dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:textColorHint="@color/blueexpo">
 
                 <EditText
                     android:id="@+id/txtName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:ems="10"
                     android:hint="Name"
@@ -48,15 +50,16 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:layout_weight="1"
                 android:textColorHint="@color/blueexpo">
 
                 <EditText
                     android:id="@+id/txtEmail"
                     style="@style/Widget.AppCompat.EditText"
-                    android:layout_width="match_parent"
+                    android:layout_width="340dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_gravity="center"
                     android:ems="10"
                     android:hint="Email"
                     android:inputType="textEmailAddress"
@@ -71,9 +74,9 @@
                 <EditText
                     android:id="@+id/txtPassword"
                     style="@android:style/Widget.DeviceDefault.EditText"
-                    android:layout_width="match_parent"
+                    android:layout_width="340dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_gravity="center"
                     android:ems="10"
                     android:hint="Password"
                     android:inputType="textPassword"
@@ -89,9 +92,9 @@
 
                 <EditText
                     android:id="@+id/txtConfirmation"
-                    android:layout_width="match_parent"
+                    android:layout_width="342dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_gravity="center"
                     android:ems="10"
                     android:hint="Password confirmation"
                     android:inputType="textPassword"
