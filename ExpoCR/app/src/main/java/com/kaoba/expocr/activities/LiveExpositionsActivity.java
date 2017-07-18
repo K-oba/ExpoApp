@@ -45,7 +45,7 @@ public class LiveExpositionsActivity extends AppCompatActivity {
         assert listview != null;
         ImageView image = (ImageView) findViewById(R.id.imageView4);
         Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500393003/beacon-illustration-1024x673_bfpl6y.jpg").into(image);
-        ImageView logo = (ImageView) findViewById(R.id.imageView6);
+        ImageView logo = (ImageView) findViewById(R.id.imageView5);
         Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500361962/expocr-vale_720_mnb6qb.png").into(logo);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

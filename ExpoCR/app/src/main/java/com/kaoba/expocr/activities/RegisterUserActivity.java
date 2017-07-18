@@ -11,6 +11,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -22,6 +23,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.kaoba.expocr.R;
 import com.kaoba.expocr.constants.Constants;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
@@ -68,7 +70,8 @@ public class RegisterUserActivity extends AppCompatActivity {
         mPasswordView = (EditText) findViewById(R.id.txtPassword);
         mNameView = (EditText) findViewById(R.id.txtName);
         mConfirmationView = (EditText) findViewById(R.id.txtConfirmation);
-
+        ImageView image = (ImageView) findViewById(R.id.imageView3);
+        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500401482/kaoba_x6yiob.png").into(image);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

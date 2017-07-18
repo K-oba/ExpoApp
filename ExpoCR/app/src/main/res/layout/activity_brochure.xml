@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/caldroid_white"
     tools:context="com.kaoba.expocr.activities.BrochureActivity">
 
 
@@ -11,6 +12,7 @@
         android:layout_width="426dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
+        android:background="@color/caldroid_white"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.37"
@@ -24,7 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="62dp"
             android:textAlignment="center"
-            android:textSize="18sp"
+            android:textColor="@color/Blueexpo"
+            android:textSize="24sp"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="27dp" />
 
@@ -43,12 +46,14 @@
             android:layout_width="match_parent"
             android:layout_height="36dp"
             android:layout_below="@id/imageView2"
+            android:layout_weight="0.02"
             android:textAlignment="center"
+            android:textColor="@color/blueexpo"
+            android:textSize="18sp"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            tools:layout_editor_absoluteY="587dp"
-            android:layout_weight="0.02" />
+            tools:layout_editor_absoluteY="587dp" />
 
     </LinearLayout>
 

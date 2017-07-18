@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ import com.kaoba.expocr.Session;
 import com.kaoba.expocr.constants.Constants;
 import com.kaoba.expocr.constants.VolleyCallBack;
 import com.kaoba.expocr.models.StandPOJO;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,6 +53,8 @@ public class ShowExpoActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.network_error, Toast.LENGTH_SHORT).show();
         }
         ListView listview = (ListView) findViewById(R.id.ViewExpoList);
+        //ImageView logo = (ImageView) findViewById(R.id.imageView6);
+        //Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500407409/beacons-100635065-primary.idge_paxysr.jpg").into(logo);
         assert listview != null;
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -95,7 +99,8 @@ public class ShowExpoActivity extends AppCompatActivity {
                     } else {
                         items.add(getString(R.string.expo_no_stands));
                     }
-
+                    //ImageView logo = (ImageView) findViewById(R.id.imageView6);
+                    //Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500407409/beacons-100635065-primary.idge_paxysr.jpg").into(logo);
                     adapter = new ArrayAdapter<>(ShowExpoActivity.this, android.R.layout.simple_list_item_1, items);
                     ListView listview = (ListView) findViewById(R.id.ViewExpoList);
                     assert listview != null;
