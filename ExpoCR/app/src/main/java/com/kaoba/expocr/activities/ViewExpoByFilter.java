@@ -25,6 +25,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import com.squareup.picasso.Picasso;
+import android.widget.ImageView;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
@@ -63,6 +65,8 @@ public class ViewExpoByFilter extends AppCompatActivity {
         searchView.setQueryHint("Search View");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //ImageView logo = (ImageView) findViewById(R.id.imageView6);
+        //Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500407409/beacons-100635065-primary.idge_paxysr.jpg").into(logo);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
@@ -146,6 +150,7 @@ public class ViewExpoByFilter extends AppCompatActivity {
                 int[] to = new int[]{android.R.id.text1, android.R.id.text2};
 
                 int nativeLayout = android.R.layout.two_line_list_item;
+
                 listView.setAdapter(new SimpleAdapter(getApplicationContext(), list, nativeLayout, from, to));
             }
 
