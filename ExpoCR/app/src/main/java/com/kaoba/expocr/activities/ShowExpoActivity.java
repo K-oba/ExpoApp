@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -64,6 +65,17 @@ public class ShowExpoActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+        Button standList = (Button) findViewById(R.id.buttonStandList);
+        assert standList != null;
+        standList.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(ShowExpoActivity.this, ListStandActivity.class);
+                startActivity(intent);
+            }
+        });
+
 //
 //        SupportMapFragment mapFragment =
 //                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);

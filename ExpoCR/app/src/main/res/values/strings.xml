@@ -30,5 +30,7 @@
     <string name="burger_name">Expo CR</string>
     <string name="calendar">calendar</string>
     <string name="expo_list">Expo List</string>
+    <string name="you_can_get_more_info_by_visiting_a_stand">You can get more info by visiting a stand</string>
+    <string name="go_back">Go back</string>
 
 </resources>

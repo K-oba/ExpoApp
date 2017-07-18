@@ -2,6 +2,7 @@ package com.kaoba.expocr.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -14,18 +15,18 @@ import com.kaoba.expocr.R;
 import com.kaoba.expocr.constants.Constants;
 import com.kaoba.expocr.constants.VolleyCallBack;
 import com.kaoba.expocr.models.StandPOJO;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class ListStandActivity extends AppCompatActivity {
     private static final String EXPO_PATH = "exposicions/";
     private Constants constants;
-
+    private static final String TAG = "List Stands";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,8 @@ public class ListStandActivity extends AppCompatActivity {
         constants = new Constants();
         ImageView image = (ImageView) findViewById(R.id.imageViewStand);
         Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500354237/stands_swatak.png").into(image);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         try {
             getExpoInfo();
         } catch (JSONException e) {
@@ -59,7 +62,7 @@ public class ListStandActivity extends AppCompatActivity {
                         stand.setBeaconId(object.getLong("beaconId"));
                         stand.setId(object.getLong("id"));
                         arrayList.add(stand);
-                        Log.d("Hola",object.getString("nombre"));
+                        Log.d(TAG,object.getString("nombre"));
                     }
                     ListView listview = (ListView) findViewById(R.id.standListView);
                     ArrayAdapter<StandPOJO> adapter = new ArrayAdapter<>(ListStandActivity.this, android.R.layout.simple_list_item_1, arrayList);
