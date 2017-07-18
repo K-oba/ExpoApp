@@ -3,7 +3,7 @@
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Passowrd</string>
+    <string name="prompt_password">Password</string>
     <string name="action_sign_in">Log In</string>
     <string name="action_sign_in_short">Log in</string>
     <string name="error_invalid_email">Invalid Email</string>
@@ -12,8 +12,8 @@
     <string name="error_field_required">Field required</string>
 
     <string name="network_error">An problem with the network happened, please try again</string>
-    <string name="permission_rationale">"Permisos de contactos requeridos para autocompletar correos"</string>
-    <string name="title_activity_welcome">Welcome Activity</string>
+    <string name="permission_rationale">"Contacts are used to auto complete emails"</string>
+    <string name="title_activity_welcome">Welcome</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -23,9 +23,12 @@
     <string name="title_activity_list_live_exposition">Live Expositions</string>
     <string name="logout">Logout</string>
     <string name="title_activity_show_expo">Exposition Information</string>
+    <string name="title_activity_stand_list">Stand List</string>
     <string name="title_activity_show_stand">Stand Information</string>
     <string name="expo_no_stands">Exposition has no stands yet</string>
     <string name="error_welcome_screen_permission">Permission not accepted</string>
     <string name="burger_name">Expo CR</string>
+    <string name="calendar">calendar</string>
+    <string name="expo_list">Expo List</string>
 
 </resources>
