@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.android.volley.RequestQueue;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.squareup.picasso.Picasso;
 
 public class ListStandActivity extends AppCompatActivity {
     private static final String EXPO_PATH = "exposicions/";
@@ -29,7 +31,8 @@ public class ListStandActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_stand);
         constants = new Constants();
-
+        ImageView image = (ImageView) findViewById(R.id.imageViewStand);
+        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500354237/stands_swatak.png").into(image);
         try {
             getExpoInfo();
         } catch (JSONException e) {
