@@ -112,10 +112,8 @@ public class RegisterUserActivity extends AppCompatActivity {
                 obj.put(NOMBRE, name);
                 obj.put(CLAVE, password);
                 obj.put(CORREO, email);
-                constants.executePostPutRequest(obj, Volley.newRequestQueue(this), REQUEST_METHOD, FINAL_PATH, getApplicationContext(),REGISTER_ACTIVITY);
-//                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-//                intent.putExtra(EXTRA_MESSAGE, "");
-//                startActivity(intent);
+                constants.executePostPutRequest(obj, Volley.newRequestQueue(this), REQUEST_METHOD, FINAL_PATH,getApplicationContext(), REGISTER_ACTIVITY);
+                finish();
             }
         }catch (Exception e){
             throw new Exception(e.getMessage());

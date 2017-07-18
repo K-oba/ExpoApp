@@ -14,6 +14,7 @@ import com.kaoba.expocr.activities.WelcomeActivity;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 public class BeaconNotificationsManager {
 
@@ -51,6 +52,13 @@ public class BeaconNotificationsManager {
                 }
             }
         });
+
+        beaconManager.setRangingListener(new BeaconManager.BeaconRangingListener() {
+            @Override
+            public void onBeaconsDiscovered(BeaconRegion beaconRegion, List<com.estimote.coresdk.recognition.packets.Beacon> list) {
+                Log.d(TAG,"te vi!");
+            }
+        });
     }
 
     public void addNotification(Beacon beaconID, String enterMessage, String exitMessage) {
@@ -66,7 +74,10 @@ public class BeaconNotificationsManager {
             public void onServiceReady() {
                 for (BeaconRegion region : regionsToMonitor) {
                     beaconManager.startMonitoring(region);
+
                 }
+
+                beaconManager.startRanging(new BeaconRegion("rid",UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"),null,null));
             }
         });
     }

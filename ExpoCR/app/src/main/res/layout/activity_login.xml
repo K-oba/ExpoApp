@@ -84,14 +84,15 @@
                 android:text="@string/action_sign_in"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/btnCreateAccount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Crear una cuenta"
-                android:textAlignment="center" />
-
         </LinearLayout>
     </ScrollView>
+
+    <TextView
+        android:id="@+id/btnCreateAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="Sign In"
+        android:textAlignment="center" />
 
 </LinearLayout>

@@ -1,7 +1,7 @@
 package com.kaoba.expocr.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -9,18 +9,18 @@ import android.widget.ListView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 import com.kaoba.expocr.R;
 import com.kaoba.expocr.constants.Constants;
 import com.kaoba.expocr.constants.VolleyCallBack;
 import com.kaoba.expocr.models.StandPOJO;
-import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class ListStandActivity extends AppCompatActivity {
     private static final String EXPO_PATH = "exposicions/";

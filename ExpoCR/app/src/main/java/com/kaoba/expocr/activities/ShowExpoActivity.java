@@ -56,10 +56,12 @@ public class ShowExpoActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                StandPOJO standPOJO = (StandPOJO) parent.getItemAtPosition(position);
-                Intent intent = new Intent(ShowExpoActivity.this, ShowStandActivity.class);
-                intent.putExtra(EXTRA_MESSAGE, standPOJO.getId().toString());
-                startActivity(intent);
+                if (parent.getItemAtPosition(position) instanceof StandPOJO) {
+                    StandPOJO standPOJO = (StandPOJO) parent.getItemAtPosition(position);
+                    Intent intent = new Intent(ShowExpoActivity.this, ShowStandActivity.class);
+                    intent.putExtra(EXTRA_MESSAGE, standPOJO.getId().toString());
+                    startActivity(intent);
+                }
             }
         });
 //
@@ -79,12 +81,12 @@ public class ShowExpoActivity extends AppCompatActivity {
                     items.add(response.getString("descripcion"));
                     String start = response.getString("fechaInicio").substring(0, 10);
                     String end = response.getString("fechaFin").substring(0, 10);
-                    items.add("From ".concat(start).concat( " to ").concat(end));
+                    items.add("From ".concat(start).concat(" to ").concat(end));
                     coordenadas = response.getString("coordenadas");
 
                     if (response.getJSONArray("stands").length() > 0) {
                         JSONArray jsonArray = response.getJSONArray("stands");
-                        for (int i=0; i < jsonArray.length(); i++) {
+                        for (int i = 0; i < jsonArray.length(); i++) {
                             StandPOJO standPOJO = new StandPOJO();
                             standPOJO.setName(jsonArray.getJSONObject(i).getString(NAME));
                             standPOJO.setId(jsonArray.getJSONObject(i).getLong(ID));

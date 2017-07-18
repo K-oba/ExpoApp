@@ -2,18 +2,16 @@ package com.kaoba.expocr.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.estimote.coresdk.common.requirements.SystemRequirementsChecker;
 import com.kaoba.expocr.R;
@@ -34,28 +32,51 @@ public class WelcomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        assert fab != null;
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
+
+        Button calendar = (Button) findViewById(R.id.buttonCalendar);
+        assert calendar != null;
+        calendar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(WelcomeActivity.this, ViewExpoCalendarActivity.class);
+                startActivity(intent);
             }
         });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
+        Button expoList = (Button) findViewById(R.id.buttonExpoList);
+        assert expoList != null;
+        expoList.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(WelcomeActivity.this, LiveExpositionsActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        assert drawer != null;
+//        drawer.setDrawerListener(toggle);
+//        toggle.syncState();
+
+//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+//        assert navigationView != null;
+//        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        assert drawer != null;
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -111,6 +132,7 @@ public class WelcomeActivity extends AppCompatActivity
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        assert drawer != null;
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -122,7 +144,7 @@ public class WelcomeActivity extends AppCompatActivity
         BeaconAppManager manager = (BeaconAppManager) getApplication();
 
         if (!SystemRequirementsChecker.checkWithDefaultDialogs(this)){
-            Log.d("ERROR","No se aceptaron los permisos");
+            Log.d("ERROR",getString(R.string.error_welcome_screen_permission));
         }else if(!manager.isBeaconNotificationsEnabled()){
             manager.enableBeaconNotifications();
         }
