@@ -11,6 +11,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -43,6 +44,7 @@ public class RegisterUserActivity extends AppCompatActivity {
 
     private static final int REQUEST_METHOD = 1;
     private static final String FINAL_PATH = "usuarios";
+    private static final int REGISTER_ACTIVITY = 1;
 
     private Constants constants;
 
@@ -110,10 +112,8 @@ public class RegisterUserActivity extends AppCompatActivity {
                 obj.put(NOMBRE, name);
                 obj.put(CLAVE, password);
                 obj.put(CORREO, email);
-                constants.executePostPutRequest(obj, Volley.newRequestQueue(this), REQUEST_METHOD, FINAL_PATH);
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                intent.putExtra(EXTRA_MESSAGE, "");
-                startActivity(intent);
+                constants.executePostPutRequest(obj, Volley.newRequestQueue(this), REQUEST_METHOD, FINAL_PATH,getApplicationContext(), REGISTER_ACTIVITY);
+                finish();
             }
         }catch (Exception e){
             throw new Exception(e.getMessage());
@@ -176,17 +176,21 @@ public class RegisterUserActivity extends AppCompatActivity {
 
     private boolean isPasswordValid(String password, String confirmation) {
         if (password.isEmpty()) {
-            mPasswordView.setError(getString(R.string.error_field_required));
+            mPasswordView.setError("This field is required");
             mPasswordView.requestFocus();
+            isOk = false;
         } else if (confirmation.isEmpty()) {
-            mConfirmationView.setError(getString(R.string.error_field_required));
+            mConfirmationView.setError("This field is required");
             mConfirmationView.requestFocus();
+            isOk = false;
         } else if (!password.equals(confirmation)) {
             mConfirmationView.setError("Passwords doesn't match");
             mConfirmationView.requestFocus();
+            isOk = false;
         } else if (!password.matches(PASSWORD_PATTERN)) {
             mPasswordView.setError("Incorrect format");
             mPasswordView.requestFocus();
+            isOk = false;
         } else
             isOk = true;
         return isOk;

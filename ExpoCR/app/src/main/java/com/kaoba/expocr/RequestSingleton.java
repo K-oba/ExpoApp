@@ -8,6 +8,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
+import com.kaoba.expocr.constants.Constants;
 
 /**
  * Created by Jimmi on 02/07/2017.
@@ -19,7 +20,7 @@ public class RequestSingleton {
     private RequestQueue requestQueue;
     private ImageLoader imageLoader;
     private static Context context;
-    public static String apiRoute = "http://192.168.86.235:8080/api/";
+    public static String apiRoute = Constants.URL;
 
 
     private RequestSingleton(Context context){

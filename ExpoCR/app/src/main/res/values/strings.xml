@@ -4,12 +4,12 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Passowrd</string>
-    <string name="action_sign_in">Sing In</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">Este correo es invalido</string>
-    <string name="error_invalid_password">La contraseña es muy corta</string>
-    <string name="error_incorrect_password">Contraseña incorrecta</string>
-    <string name="error_field_required">Este campo es requerido</string>
+    <string name="action_sign_in">Log In</string>
+    <string name="action_sign_in_short">Log in</string>
+    <string name="error_invalid_email">Invalid Email</string>
+    <string name="error_invalid_password">Password too short</string>
+    <string name="error_incorrect_password">Wrong Password</string>
+    <string name="error_field_required">Field required</string>
 
     <string name="network_error">An problem with the network happened, please try again</string>
     <string name="permission_rationale">"Permisos de contactos requeridos para autocompletar correos"</string>

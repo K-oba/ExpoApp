@@ -2,15 +2,17 @@ package com.kaoba.expocr.estimote;
 
 import android.app.Application;
 
+import com.estimote.coresdk.cloud.google.model.Beacons;
 import com.estimote.coresdk.common.config.EstimoteSDK;
 
-//
-// Running into any issues? Drop us an email to: contact@estimote.com
-//
+import java.util.ArrayList;
 
 public class BeaconAppManager extends Application {
 
     private boolean beaconNotificationsEnabled = false;
+    private ArrayList<Beacon> beaconsExpo;
+    private Beacon beaconExpo;
+    private boolean standsBeacons = false;
 
     @Override
     public void onCreate() {
@@ -27,6 +29,7 @@ public class BeaconAppManager extends Application {
         if (beaconNotificationsEnabled) { return; }
 
         BeaconNotificationsManager beaconNotificationsManager = new BeaconNotificationsManager(this);
+
         beaconNotificationsManager.addNotification(
                 new Beacon("B9407F30-F5F8-466E-AFF9-25556B57FE6D", 21323, 17231),
                 "Hello, world.",
@@ -40,13 +43,8 @@ public class BeaconAppManager extends Application {
         return beaconNotificationsEnabled;
     }
 
-    public boolean loadBeaconsByExpo() {
-        //getBeaconsByExpo
-
-     return false;
-    }
-
     public void beaconDistance(){
 
     }
+
 }
