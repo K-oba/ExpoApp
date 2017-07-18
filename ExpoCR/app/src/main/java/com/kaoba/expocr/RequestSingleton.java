@@ -19,7 +19,7 @@ public class RequestSingleton {
     private RequestQueue requestQueue;
     private ImageLoader imageLoader;
     private static Context context;
-    public static String apiRoute = "http://192.168.1.52:8080/api/";
+    public static String apiRoute = "http://192.168.86.235:8080/api/";
 
 
     private RequestSingleton(Context context){

@@ -25,5 +25,7 @@
     <string name="title_activity_show_expo">Exposition Information</string>
     <string name="title_activity_show_stand">Stand Information</string>
     <string name="expo_no_stands">Exposition has no stands yet</string>
+    <string name="error_welcome_screen_permission">Permission not accepted</string>
+    <string name="burger_name">Expo CR</string>
 
 </resources>
