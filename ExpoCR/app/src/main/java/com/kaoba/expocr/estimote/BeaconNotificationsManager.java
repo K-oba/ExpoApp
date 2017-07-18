@@ -53,12 +53,12 @@ public class BeaconNotificationsManager {
             }
         });
 
-        beaconManager.setRangingListener(new BeaconManager.BeaconRangingListener() {
-            @Override
-            public void onBeaconsDiscovered(BeaconRegion beaconRegion, List<com.estimote.coresdk.recognition.packets.Beacon> list) {
-                Log.d(TAG,"te vi!");
-            }
-        });
+//        beaconManager.setRangingListener(new BeaconManager.BeaconRangingListener() {
+//            @Override
+//            public void onBeaconsDiscovered(BeaconRegion beaconRegion, List<com.estimote.coresdk.recognition.packets.Beacon> list) {
+//                Log.d(TAG,"te vi!");
+//            }
+//        });
     }
 
     public void addNotification(Beacon beaconID, String enterMessage, String exitMessage) {
@@ -77,7 +77,7 @@ public class BeaconNotificationsManager {
 
                 }
 
-                beaconManager.startRanging(new BeaconRegion("rid",UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"),null,null));
+//                beaconManager.startRanging(new BeaconRegion("rid",UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"),null,null));
             }
         });
     }
