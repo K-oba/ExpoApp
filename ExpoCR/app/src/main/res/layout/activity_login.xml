@@ -31,7 +31,8 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="420dp">
+        android:layout_height="179dp"
+        android:layout_weight="0.04">
 
         <LinearLayout
             android:id="@+id/email_login_form"
@@ -51,7 +52,11 @@
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColor="@color/caldroid_black"
+                    android:textColorHighlight="@color/blueexpo"
+                    android:textColorHint="@color/blueexpo"
+                    android:textColorLink="@color/blueexpo" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -70,7 +75,9 @@
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColor="@color/caldroid_black"
+                    android:textColorLink="@color/blueexpo" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -93,6 +100,9 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:text="Sign In"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@color/pinkexpo"
+        android:textColorHint="@color/pinkexpo"
+        android:layout_weight="0.04" />
 
 </LinearLayout>
