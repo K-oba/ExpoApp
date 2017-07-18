@@ -43,6 +43,7 @@ public class BrochureActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_brochure);
         constants = new Constants();
+        ListView listview = (ListView) findViewById(R.id.liveListViewPOJO);
         try {
             getBrochureInfo();
         } catch (JSONException e) {
