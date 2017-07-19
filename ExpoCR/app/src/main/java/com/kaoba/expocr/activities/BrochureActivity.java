@@ -79,7 +79,7 @@ public class BrochureActivity extends Activity{
             public void onError(String error) {
 
             }
-        }, queue, BROCHURE_PATH.concat(getIntent().getStringExtra("idStand")));/** Require id SESSION */
+        }, queue, BROCHURE_PATH.concat("3"));/** Require id SESSION */
     }
 
 }

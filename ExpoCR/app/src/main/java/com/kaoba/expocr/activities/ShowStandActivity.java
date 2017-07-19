@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.android.volley.RequestQueue;
@@ -13,6 +14,7 @@ import com.android.volley.toolbox.Volley;
 import com.kaoba.expocr.R;
 import com.kaoba.expocr.constants.Constants;
 import com.kaoba.expocr.constants.VolleyCallBack;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -57,7 +59,6 @@ public class ShowStandActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
                 adapter = new ArrayAdapter<>(ShowStandActivity.this, android.R.layout.simple_list_item_1, items);
                 ListView listview = (ListView) findViewById(R.id.showStandList);
                 assert listview != null;
