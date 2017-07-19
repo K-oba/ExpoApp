@@ -11,6 +11,7 @@ import com.estimote.coresdk.cloud.google.model.Beacons;
 import com.estimote.coresdk.common.config.EstimoteSDK;
 import com.google.gson.JsonParser;
 import com.kaoba.expocr.R;
+import com.kaoba.expocr.Session;
 import com.kaoba.expocr.activities.ListStandActivity;
 import com.kaoba.expocr.constants.Constants;
 import com.kaoba.expocr.constants.VolleyCallBack;
@@ -102,7 +103,7 @@ public class BeaconAppManager extends Application {
             public void onError(String error) {
 
             }
-        }, queue, "exposicions/1");/** Require id SESSION */
+        }, queue, "exposicions/"+ new Session(getApplicationContext()).getExpoId());/** Require id SESSION */
     }
 
 }

@@ -14,10 +14,12 @@ import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.estimote.coresdk.common.requirements.SystemRequirementsChecker;
 import com.kaoba.expocr.R;
 import com.kaoba.expocr.Session;
 import com.kaoba.expocr.constants.Constants;
 import com.kaoba.expocr.constants.VolleyCallBack;
+import com.kaoba.expocr.estimote.BeaconAppManager;
 import com.kaoba.expocr.models.StandPOJO;
 import com.squareup.picasso.Picasso;
 
@@ -125,6 +127,19 @@ public class ShowExpoActivity extends AppCompatActivity {
                 Log.e(TAG, error);
             }
         }, queue, EXPO_PATH.concat(expoId.toString()));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        BeaconAppManager manager = (BeaconAppManager) getApplication();
+
+        if (!SystemRequirementsChecker.checkWithDefaultDialogs(this)){
+            Log.d("ERROR",getString(R.string.error_welcome_screen_permission));
+        }else if(!manager.isBeaconNotificationsEnabled()){
+            manager.enableBeaconNotifications();
+        }
     }
 
 //    @Override
