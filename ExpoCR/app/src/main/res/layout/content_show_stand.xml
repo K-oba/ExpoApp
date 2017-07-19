@@ -10,36 +10,17 @@
 
     <LinearLayout
         android:layout_width="404dp"
-        android:layout_height="594dp"
+        android:layout_height="581dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteY="3dp"
+        tools:layout_editor_absoluteY="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        tools:layout_editor_absoluteX="0dp"
-        android:weightSum="1">
-
-        <ImageView
-            android:id="@+id/imgrobertstand"
-            android:layout_width="421dp"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_menu_gallery"
-            android:layout_weight="0.29" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.04"
-            android:text="You can get more info by visiting a stand"
-            android:textAlignment="center"
-            android:textColor="@color/caldroid_black"
-            android:textSize="18sp" />
+        app:layout_constraintHorizontal_bias="0.0">
 
         <ListView
             android:id="@+id/showStandList"
             android:layout_width="match_parent"
-            android:layout_height="161dp"
+            android:layout_height="201dp"
             android:background="@android:color/holo_blue_bright"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="8dp" />
