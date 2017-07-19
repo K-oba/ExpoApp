@@ -53,7 +53,7 @@ public class ShowExpoActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.network_error, Toast.LENGTH_SHORT).show();
         }
         ListView listview = (ListView) findViewById(R.id.ViewExpoList);
-        //ImageView logo = (ImageView) findViewById(R.id.imageView6);
+        //ImageView logo = (ImageView) findViewById(R.id.imageshowExpo);
         //Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500407409/beacons-100635065-primary.idge_paxysr.jpg").into(logo);
         assert listview != null;
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
