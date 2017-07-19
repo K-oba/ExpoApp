@@ -11,6 +11,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.JsonParser;
 import com.kaoba.expocr.R;
+import com.kaoba.expocr.Session;
 import com.kaoba.expocr.constants.Constants;
 import com.kaoba.expocr.constants.VolleyCallBack;
 import com.kaoba.expocr.models.StandPOJO;
@@ -33,6 +34,7 @@ public class ListStandActivity extends AppCompatActivity {
         constants = new Constants();
         ImageView image = (ImageView) findViewById(R.id.imageViewStand);
         Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500354237/stands_swatak.png").into(image);
+
         try {
             getExpoInfo();
         } catch (JSONException e) {
@@ -42,6 +44,8 @@ public class ListStandActivity extends AppCompatActivity {
 
     public void getExpoInfo() throws JSONException {
         final RequestQueue queue = Volley.newRequestQueue(this);
+        Session session = new Session(getApplicationContext());
+        Long idExpo = session.getExpoId();
         constants.executeGetRequest(new VolleyCallBack() {
             @Override
             public void onSuccess(JSONObject response) {
@@ -77,7 +81,7 @@ public class ListStandActivity extends AppCompatActivity {
             public void onError(String error) {
 
             }
-        }, queue, EXPO_PATH.concat("1"));/** Require id SESSION */
+        }, queue, EXPO_PATH.concat(Long.toString(idExpo)));/** Require id SESSION */
     }
 
 }

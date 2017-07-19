@@ -16,13 +16,13 @@
         android:weightSum="1">
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/imageimagelogoexpo"
             android:layout_width="418dp"
             android:layout_height="94dp"
             app:srcCompat="@drawable/ic_menu_camera" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/imageexpolist"
             android:layout_width="421dp"
             android:layout_height="231dp" />
 

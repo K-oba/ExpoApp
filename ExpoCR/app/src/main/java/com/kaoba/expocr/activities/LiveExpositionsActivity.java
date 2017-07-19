@@ -1,5 +1,5 @@
 package com.kaoba.expocr.activities;
-
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -28,7 +28,7 @@ import com.kaoba.expocr.R;
 import java.util.ArrayList;
 import com.squareup.picasso.Picasso;
 
-public class LiveExpositionsActivity extends AppCompatActivity {
+public class LiveExpositionsActivity extends Activity {
 
     private static final String NAME = "nombre";
     private static final String ID = "id";
@@ -43,9 +43,9 @@ public class LiveExpositionsActivity extends AppCompatActivity {
         executeRequest();
         ListView listview = (ListView) findViewById(R.id.liveListViewPOJO);
         assert listview != null;
-        ImageView image = (ImageView) findViewById(R.id.imageView4);
+        ImageView image = (ImageView) findViewById(R.id.imageexpolist);
         Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500393003/beacon-illustration-1024x673_bfpl6y.jpg").into(image);
-        ImageView logo = (ImageView) findViewById(R.id.imageView5);
+        ImageView logo = (ImageView) findViewById(R.id.imageimagelogoexpo);
         Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500361962/expocr-vale_720_mnb6qb.png").into(logo);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
