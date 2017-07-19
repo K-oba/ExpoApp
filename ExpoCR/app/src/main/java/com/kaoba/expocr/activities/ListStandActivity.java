@@ -59,7 +59,7 @@ public class ListStandActivity extends AppCompatActivity {
                         stand.setBeaconId(object.getLong("beaconId"));
                         stand.setId(object.getLong("id"));
                         arrayList.add(stand);
-                        Log.d("Hola",object.getString("nombre"));
+                        Log.d("Hola",object.getJSONObject("beacon").toString());
                     }
                     ListView listview = (ListView) findViewById(R.id.standListView);
                     ArrayAdapter<StandPOJO> adapter = new ArrayAdapter<>(ListStandActivity.this, android.R.layout.simple_list_item_1, arrayList);
