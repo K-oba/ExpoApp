@@ -17,6 +17,8 @@ import com.estimote.coresdk.common.requirements.SystemRequirementsChecker;
 import com.kaoba.expocr.R;
 import com.kaoba.expocr.Session;
 import com.kaoba.expocr.estimote.BeaconAppManager;
+import android.widget.ImageView;
+import com.squareup.picasso.Picasso;
 
 public class WelcomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,7 +30,8 @@ public class WelcomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         session = new Session(getApplicationContext());
-
+        ImageView image = (ImageView) findViewById(R.id.imageWelcomeMenu);
+        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500407409/beacons-100635065-primary.idge_paxysr.jpg").into(image);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

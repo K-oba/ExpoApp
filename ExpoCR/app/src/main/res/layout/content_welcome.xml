@@ -9,13 +9,26 @@
     tools:context="com.kaoba.expocr.activities.WelcomeActivity"
     tools:showIn="@layout/app_bar_welcome">
 
+    <ImageView
+        android:id="@+id/imageWelcomeMenu"
+        android:layout_width="488dp"
+        android:layout_height="325dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.532"
+        app:srcCompat="@drawable/ic_menu_gallery" />
+
     <Button
         android:id="@+id/buttonCalendar"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_width="392dp"
+        android:layout_height="72dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="44dp"
+        android:background="@color/pinkexpo"
         android:text="@string/calendar"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -24,18 +37,19 @@
 
     <Button
         android:id="@+id/buttonExpoList"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_width="392dp"
+        android:layout_height="69dp"
         android:layout_marginBottom="-8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        android:background="@color/Blueexpo"
         android:text="@string/expo_list"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonCalendar"
-        app:layout_constraintVertical_bias="0.12" />
+        app:layout_constraintVertical_bias="0.878" />
 
 </android.support.constraint.ConstraintLayout>

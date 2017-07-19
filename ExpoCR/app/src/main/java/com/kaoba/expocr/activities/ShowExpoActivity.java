@@ -105,8 +105,8 @@ public class ShowExpoActivity extends AppCompatActivity {
                     //Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500407409/beacons-100635065-primary.idge_paxysr.jpg").into(logo);
                     adapter = new ArrayAdapter<>(ShowExpoActivity.this, android.R.layout.simple_list_item_1, items);
                     ListView listview = (ListView) findViewById(R.id.ViewExpoList);
-                    ImageView image = (ImageView) findViewById(R.id.imgrobertstand);
-                    Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500354237/stands_swatak.png").into(image);
+                    //ImageView image = (ImageView) findViewById(R.id.imgrobertstand);
+                    //Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500354237/stands_swatak.png").into(image);
                     assert listview != null;
                     listview.setAdapter(adapter);
                 } catch (JSONException e) {
