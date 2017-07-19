@@ -52,7 +52,7 @@ public class LiveExpositionsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 ExpositionPOJO expositionPOJO = (ExpositionPOJO) parent.getItemAtPosition(position);
-                Intent intent = new Intent(LiveExpositionsActivity.this, WelcomeActivity.class);
+                Intent intent = new Intent(LiveExpositionsActivity.this, ShowExpoActivity.class);
                 intent.putExtra(EXTRA_MESSAGE, expositionPOJO.getId().toString());
                 Session session = new Session(getApplicationContext());
                 session.setExpoId(expositionPOJO.getId());
