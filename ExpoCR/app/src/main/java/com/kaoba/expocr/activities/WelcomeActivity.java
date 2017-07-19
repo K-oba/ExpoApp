@@ -147,16 +147,16 @@ public class WelcomeActivity extends AppCompatActivity
         return true;
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        BeaconAppManager manager = (BeaconAppManager) getApplication();
-
-        if (!SystemRequirementsChecker.checkWithDefaultDialogs(this)){
-            Log.d("ERROR",getString(R.string.error_welcome_screen_permission));
-        }else if(!manager.isBeaconNotificationsEnabled()){
-            manager.enableBeaconNotifications();
-        }
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//
+//        BeaconAppManager manager = (BeaconAppManager) getApplication();
+//
+//        if (!SystemRequirementsChecker.checkWithDefaultDialogs(this)){
+//            Log.d("ERROR",getString(R.string.error_welcome_screen_permission));
+//        }else if(!manager.isBeaconNotificationsEnabled()){
+//            manager.enableBeaconNotifications();
+//        }
+//    }
 }
