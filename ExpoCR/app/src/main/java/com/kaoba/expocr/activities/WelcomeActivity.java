@@ -78,12 +78,21 @@ public class WelcomeActivity extends AppCompatActivity
             }
         });
 
+        FloatingActionButton stadistics = (FloatingActionButton) findViewById(R.id.stadisticsButton);
+        assert stadistics != null;
+        stadistics.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(WelcomeActivity.this, StadisticsMenuActivity.class);
+                startActivity(intent);
+            }
+        });
+
 //        Button standList = (Button) findViewById(R.id.buttonStands);
 //        assert standList != null;
 //        expoList.setOnClickListener(new View.OnClickListener() {
 //            public void onClick(View v) {
 //                Intent intent = new Intent(WelcomeActivity.this, ListStandActivity.class);
-//                startActivity(intent);
+//                startActivity(intent); stadisticsButton
 //            }
 //        });
 
