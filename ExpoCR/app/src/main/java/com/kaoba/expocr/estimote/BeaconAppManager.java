@@ -83,7 +83,7 @@ public class BeaconAppManager extends Application {
 
                         String beaconsIds[] = object.getJSONObject("beacon").getString("uuid").split(":");
                         beaconNotificationsManager.addNotification(
-                                new Beacon(beaconsIds[0],Integer.parseInt(beaconsIds[1]),Integer.parseInt(beaconsIds[2])),object.getString("nombre"),object.getString("tipo"),object.getString("id"));
+                                new Beacon(beaconsIds[0],Integer.parseInt(beaconsIds[1]),Integer.parseInt(beaconsIds[2])),object.getString("nombre"),object.getString("tipo"),object.getString("brouchureId"));
 
                         Log.d("Ne",object.getJSONObject("beacon").getString("uuid"));
                     }
