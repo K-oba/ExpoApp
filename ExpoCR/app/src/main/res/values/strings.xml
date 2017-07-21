@@ -13,7 +13,7 @@
 
     <string name="network_error">An problem with the network happened, please try again</string>
     <string name="permission_rationale">"Contacts are used to auto complete emails"</string>
-    <string name="title_activity_welcome">Welcome</string>
+    <string name="title_activity_welcome"></string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
