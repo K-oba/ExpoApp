@@ -4,52 +4,181 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_above="@+id/filterExpoFloatingButton"
     android:background="@color/caldroid_white"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.kaoba.expocr.activities.WelcomeActivity"
     tools:showIn="@layout/app_bar_welcome">
 
-    <ImageView
-        android:id="@+id/imageWelcomeMenu"
-        android:layout_width="488dp"
-        android:layout_height="325dp"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/calendarFloatingButton"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="224dp"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_menu_camera" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/filterExpoFloatingButton"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_marginLeft="161dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="224dp"
+        android:clickable="true"
+        app:backgroundTint="@color/Blueexpo"
+        app:fabSize="mini"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_menu_camera" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/simpleListExpoButton"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_marginLeft="307dp"
+        android:layout_marginStart="307dp"
+        android:layout_marginTop="224dp"
+        android:clickable="true"
+        app:backgroundTint="@color/pinkexpo"
+        app:fabSize="mini"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_menu_camera" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/QAFloatingButton"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_marginLeft="307dp"
+        android:layout_marginStart="307dp"
+        android:layout_marginTop="399dp"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_menu_camera" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/stadisticsButton"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="399dp"
+        android:clickable="true"
+        app:backgroundTint="@color/blueexpo"
+        app:fabSize="mini"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_menu_camera" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/timelineButton"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_marginLeft="161dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="399dp"
+        android:clickable="true"
+        app:backgroundTint="@color/pinkexpo"
+        app:fabSize="mini"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_menu_camera" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="34dp"
+        android:layout_height="19dp"
+        android:text="Live"
+        android:textColor="@color/caldroid_black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/textView10"
+        app:layout_constraintHorizontal_bias="0.726"
+        app:layout_constraintVertical_bias="0.568" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="51dp"
+        android:layout_height="19dp"
+        android:text="Search"
+        android:textColor="@color/caldroid_black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.568" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="34dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="344dp"
+        android:layout_marginStart="337dp"
+        android:text="QA"
+        android:textAlignment="center"
+        android:textColor="@color/caldroid_black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.892" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="71dp"
+        android:layout_height="17dp"
+        android:text="Timeline"
+        android:textAlignment="center"
+        android:textColor="@color/caldroid_black"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.532"
-        app:srcCompat="@drawable/ic_menu_gallery" />
+        app:layout_constraintVertical_bias="0.892" />
 
-    <Button
-        android:id="@+id/buttonCalendar"
-        android:layout_width="392dp"
-        android:layout_height="72dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="44dp"
-        android:background="@color/pinkexpo"
-        android:text="@string/calendar"
-        app:layout_constraintHorizontal_bias="0.0"
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="71dp"
+        android:layout_height="17dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="32dp"
+        android:text="Stadistics"
+        android:textColor="@color/caldroid_black"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonExpoList"
-        android:layout_width="392dp"
-        android:layout_height="69dp"
-        android:layout_marginBottom="-8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/Blueexpo"
-        android:text="@string/expo_list"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.892" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="97dp"
+        android:layout_height="18dp"
+        android:text="Expo Calendar"
+        android:textColor="@color/caldroid_black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.57"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.079" />
+
+    <ImageView
+        android:id="@+id/imageWelcomeHeader"
+        android:layout_width="404dp"
+        android:layout_height="143dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_menu_camera"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCalendar"
-        app:layout_constraintVertical_bias="0.878" />
+        app:layout_constraintHorizontal_bias="0.428" />
 
 </android.support.constraint.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.kaoba.expocr.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -30,8 +31,22 @@ public class WelcomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         session = new Session(getApplicationContext());
-        ImageView image = (ImageView) findViewById(R.id.imageWelcomeMenu);
-        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500407409/beacons-100635065-primary.idge_paxysr.jpg").into(image);
+        //Images
+        ImageView imgCalendar = (ImageView) findViewById(R.id.calendarFloatingButton);
+        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500567372/calendar-text_1_y1ymrp.png").into(imgCalendar);
+        ImageView imageFilterExpo = (ImageView) findViewById(R.id.filterExpoFloatingButton);
+        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500567668/magnify_dvqs5r.png").into(imageFilterExpo);
+        ImageView imageListExpo = (ImageView) findViewById(R.id.simpleListExpoButton);
+        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500568059/format-list-bulleted_stbfzm.png").into(imageListExpo);
+        ImageView imageQA = (ImageView) findViewById(R.id.QAFloatingButton);
+        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500568865/comment-processing-outline_xngwqu.png").into(imageQA);
+        ImageView imageTimeLine = (ImageView) findViewById(R.id.timelineButton);
+        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500569301/chart-timeline_fprp7i.png").into(imageTimeLine);
+        ImageView imageStadistics = (ImageView) findViewById(R.id.stadisticsButton);
+        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500570159/chart-line-variant_hsaedj.png").into(imageStadistics);
+        ImageView imageWelcomeHeader = (ImageView) findViewById(R.id.imageWelcomeHeader);
+        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500361962/expocr-vale_720_mnb6qb.png").into(imageWelcomeHeader);
+        //Images
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -45,7 +60,7 @@ public class WelcomeActivity extends AppCompatActivity
 //            }
 //        });
 
-        Button calendar = (Button) findViewById(R.id.buttonCalendar);
+        FloatingActionButton calendar = (FloatingActionButton) findViewById(R.id.calendarFloatingButton);
         assert calendar != null;
         calendar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -54,7 +69,7 @@ public class WelcomeActivity extends AppCompatActivity
             }
         });
 
-        Button expoList = (Button) findViewById(R.id.buttonExpoList);
+        FloatingActionButton expoList = (FloatingActionButton) findViewById(R.id.simpleListExpoButton);
         assert expoList != null;
         expoList.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
