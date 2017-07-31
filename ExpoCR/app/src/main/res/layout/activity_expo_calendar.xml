@@ -20,9 +20,14 @@
 
         <ListView
             android:id="@+id/listView"
-            android:layout_width="match_parent"
-            android:layout_height="203dp"
-            android:background="@color/blueexpo" />
+            android:layout_width="98dp"
+            android:layout_height="216dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/blueexpo"
+            android:foregroundGravity="center"
+            android:labelFor="@+id/text1"
+            android:textAlignment="center"
+            android:textDirection="inherit" />
 
         <TextView
             android:id="@+id/text1"
@@ -30,7 +35,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/blueexpo"
             android:textColorHighlight="@color/Blueexpo"
-            android:textColorHint="@color/Blueexpo" />
+            android:textColorHint="@color/Blueexpo"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/text2"
