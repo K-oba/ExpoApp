@@ -1,13 +1,18 @@
 package com.kaoba.expocr.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -18,14 +23,17 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.kaoba.expocr.R;
 import com.kaoba.expocr.constants.Constants;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
+
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 /**
  * Created by antonirm on 11/6/2017.
  */
 
-public class RegisterUserActivity extends Activity {
+public class RegisterUserActivity extends AppCompatActivity {
 
 
     /***Const variables to validate***/
@@ -38,6 +46,7 @@ public class RegisterUserActivity extends Activity {
 
     private static final int REQUEST_METHOD = 1;
     private static final String FINAL_PATH = "usuarios";
+    private static final int REGISTER_ACTIVITY = 1;
 
     private Constants constants;
 
@@ -45,7 +54,7 @@ public class RegisterUserActivity extends Activity {
      * Auxiliar
      **/
     private static boolean isOk = false;
-    private static final String PASSWORD_FORMAT = "Must contains one digit 0-9, One character, One special symbol. At least 4 digits.";
+    private static final String PASSWORD_FORMAT = "Must contain one digit 0-9, One character, One special symbol. At least 4 digits.";
 
     private EditText mNameView;
     private EditText mEmailView;
@@ -61,7 +70,10 @@ public class RegisterUserActivity extends Activity {
         mPasswordView = (EditText) findViewById(R.id.txtPassword);
         mNameView = (EditText) findViewById(R.id.txtName);
         mConfirmationView = (EditText) findViewById(R.id.txtConfirmation);
-
+        ImageView image = (ImageView) findViewById(R.id.imageView3);
+        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500401482/kaoba_x6yiob.png").into(image);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         Button createUserButton = (Button) findViewById(R.id.btnCreate);
         createUserButton.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +115,8 @@ public class RegisterUserActivity extends Activity {
                 obj.put(NOMBRE, name);
                 obj.put(CLAVE, password);
                 obj.put(CORREO, email);
-                constants.executePostPutRequest(obj, Volley.newRequestQueue(this), REQUEST_METHOD, FINAL_PATH);
+                constants.executePostPutRequest(obj, Volley.newRequestQueue(this), REQUEST_METHOD, FINAL_PATH,getApplicationContext(), REGISTER_ACTIVITY);
+                finish();
             }
         }catch (Exception e){
             throw new Exception(e.getMessage());
@@ -166,17 +179,21 @@ public class RegisterUserActivity extends Activity {
 
     private boolean isPasswordValid(String password, String confirmation) {
         if (password.isEmpty()) {
-            mPasswordView.setError(getString(R.string.error_field_required));
+            mPasswordView.setError("This field is required");
             mPasswordView.requestFocus();
+            isOk = false;
         } else if (confirmation.isEmpty()) {
-            mConfirmationView.setError(getString(R.string.error_field_required));
+            mConfirmationView.setError("This field is required");
             mConfirmationView.requestFocus();
+            isOk = false;
         } else if (!password.equals(confirmation)) {
             mConfirmationView.setError("Passwords doesn't match");
             mConfirmationView.requestFocus();
+            isOk = false;
         } else if (!password.matches(PASSWORD_PATTERN)) {
             mPasswordView.setError("Incorrect format");
             mPasswordView.requestFocus();
+            isOk = false;
         } else
             isOk = true;
         return isOk;

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/caldroid_white"
+    tools:context="com.kaoba.expocr.activities.ListStandActivity">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="659dp"
+        android:background="@color/caldroid_white"
+        android:orientation="vertical"
+        android:weightSum="1"
+        app:layout_constraintHorizontal_bias="0.61"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageViewStand"
+            android:layout_width="match_parent"
+            android:layout_height="252dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.17"
+            android:text="You can get more info by visiting a stand"
+            android:textAlignment="center"
+            android:textColor="@color/caldroid_black"
+            android:textSize="18sp" />
+
+        <ListView
+            android:id="@+id/standListView"
+            android:layout_width="348dp"
+            android:layout_height="208dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="-5dp"
+            android:background="@android:color/holo_blue_bright"
+            android:choiceMode="singleChoice"
+            android:divider="?android:attr/listDivider"
+            android:foregroundGravity="center_horizontal"
+            android:textAlignment="center"
+            app:layout_constraintHorizontal_bias="0.618"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="137dp"
+            tools:layout_editor_absoluteY="94dp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="118dp"
+            android:layout_height="39dp"
+            android:layout_gravity="center"
+            android:background="#ff0544"
+            android:foregroundGravity="center"
+            android:gravity="center_horizontal|center"
+            android:text="Go back"
+            app:layout_constraintHorizontal_bias="0.464"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_editor_absoluteY="533dp" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

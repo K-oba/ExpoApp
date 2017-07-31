@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/caldroid_white"
+    tools:context="com.kaoba.expocr.activities.LiveExpositionsActivity">
+
+    <LinearLayout
+        android:layout_width="416dp"
+        android:layout_height="match_parent"
+        android:layout_marginRight="40dp"
+        android:background="@color/caldroid_white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/imageimagelogoexpo"
+            android:layout_width="wrap_content"
+            android:layout_height="94dp"
+            app:srcCompat="@drawable/ic_menu_camera" />
+
+        <ImageView
+            android:id="@+id/imageexpolist"
+            android:layout_width="match_parent"
+            android:layout_height="169dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <include
+            layout="@layout/content_list_live_exposition"
+            android:layout_width="340dp"
+            android:layout_height="216dp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,7 +1,7 @@
 package com.kaoba.expocr.constants;
 
-import android.app.Activity;
-import android.util.Log;
+import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -12,9 +12,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.kaoba.expocr.activities.LoginActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import static com.kaoba.expocr.activities.LiveExpositionsActivity.EXTRA_MESSAGE;
 
 /**
  * Created by antonirm on 18/6/2017.
@@ -24,7 +27,7 @@ import org.json.JSONObject;
 public class Constants {
 
     /***Const variables to validate***/
-    private static final String URL = "http://192.168.1.56:8080/api/";
+    public static final String URL = "http://192.168.10.114:8080/api/";
     /**
      *http://10.0.0.147:8080
      * http://192.168.40.207:8080
@@ -39,7 +42,7 @@ public class Constants {
      * @param finalPath     entity to execute (usuarios, stands, etc);
      * @return
      */
-    public void executePostPutRequest(final JSONObject obj, RequestQueue q, int requestMethod, String finalPath) throws Exception {
+    public void executePostPutRequest(final JSONObject obj, RequestQueue q, int requestMethod, String finalPath, final Context context, final int activity) throws Exception {
         try {
             RequestQueue queue = q;
 
@@ -47,13 +50,18 @@ public class Constants {
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            Log.d("Response", response);
+                            if(activity == 1){
+                                Intent intent = new Intent(context, LoginActivity.class);
+                                intent.putExtra(EXTRA_MESSAGE, "");
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                context.startActivity(intent);
+                            }
                         }
                     },
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Log.d("Response", error.getMessage());
+                            Toast.makeText(context,error.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
             ) {
@@ -64,7 +72,7 @@ public class Constants {
 
                 @Override
                 public String getBodyContentType() {
-                    return "application/json";
+                    return "application/json; charset=utf-8";
                 }
             };
             queue.add(postRequest);
@@ -73,7 +81,7 @@ public class Constants {
         }
     }
 
-    public void executeGetRequest(final VolleyCallBack callBack ,RequestQueue q, String finalPath) {
+    public void executeGetRequest(final VolleyCallBack callBack, RequestQueue q, String finalPath) {
         RequestQueue queue = q;
         // prepare the Request
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, URL.concat(finalPath), null,
@@ -94,7 +102,7 @@ public class Constants {
         queue.add(getRequest);
     }
 
-    public void executeGetListRequest(final VolleyCallBack callBack ,RequestQueue q, String finalPath) {
+    public void executeGetListRequest(final VolleyCallBack callBack, RequestQueue q, String finalPath) {
         RequestQueue queue = q;
         // prepare the Request
         JsonArrayRequest getRequest = new JsonArrayRequest(Request.Method.GET, URL.concat(finalPath), null,

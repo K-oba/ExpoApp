@@ -1,16 +1,36 @@
 package com.kaoba.expocr.estimote;
 
 import android.app.Application;
+import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+import com.estimote.coresdk.cloud.google.model.Beacons;
 import com.estimote.coresdk.common.config.EstimoteSDK;
+import com.google.gson.JsonParser;
+import com.kaoba.expocr.R;
+import com.kaoba.expocr.Session;
+import com.kaoba.expocr.activities.ListStandActivity;
+import com.kaoba.expocr.constants.Constants;
+import com.kaoba.expocr.constants.VolleyCallBack;
+import com.kaoba.expocr.models.StandPOJO;
 
-//
-// Running into any issues? Drop us an email to: contact@estimote.com
-//
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class BeaconAppManager extends Application {
 
+    private static final String EXPO_PATH = "exposicions/";
+
     private boolean beaconNotificationsEnabled = false;
+    private ArrayList<Beacon> beaconsExpo;
+    private Beacon beaconExpo;
+    private boolean standsBeacons = false;
 
     @Override
     public void onCreate() {
@@ -26,12 +46,19 @@ public class BeaconAppManager extends Application {
     public void enableBeaconNotifications() {
         if (beaconNotificationsEnabled) { return; }
 
-        BeaconNotificationsManager beaconNotificationsManager = new BeaconNotificationsManager(this);
-        beaconNotificationsManager.addNotification(
-                new Beacon("B9407F30-F5F8-466E-AFF9-25556B57FE6D", 21323, 17231),
-                "Hello, world.",
-                "Goodbye, world.");
-        beaconNotificationsManager.startMonitoring();
+//        BeaconNotificationsManager beaconNotificationsManager = new BeaconNotificationsManager(this);
+
+//        beaconNotificationsManager.addNotification(
+//                new Beacon("B9407F30-F5F8-466E-AFF9-25556B57FE6D", 21323, 17231),
+//                "Hello, world.",
+//                "Goodbye, world.");
+        try {
+            setBeaconByStand();
+//            beaconNotificationsManager.startMonitoring();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         beaconNotificationsEnabled = true;
     }
@@ -40,13 +67,43 @@ public class BeaconAppManager extends Application {
         return beaconNotificationsEnabled;
     }
 
-    public boolean loadBeaconsByExpo() {
-        //getBeaconsByExpo
+    public void setBeaconByStand() throws JSONException {
+        Constants constants = new Constants();
+        final RequestQueue queue = Volley.newRequestQueue(this);
+        constants.executeGetRequest(new VolleyCallBack() {
+            @Override
+            public void onSuccess(JSONObject response) {
+                try {
+                    BeaconNotificationsManager beaconNotificationsManager = new BeaconNotificationsManager(getApplicationContext());
 
-     return false;
+                    JSONObject object;
+                    JSONArray jsonArray = response.getJSONArray("stands");
+                    for(int i = 0; i < jsonArray.length(); i++){
+                        object = jsonArray.getJSONObject(i);
+
+                        String beaconsIds[] = object.getJSONObject("beacon").getString("uuid").split(":");
+                        beaconNotificationsManager.addNotification(
+                                new Beacon(beaconsIds[0],Integer.parseInt(beaconsIds[1]),Integer.parseInt(beaconsIds[2])),object.getString("nombre"),object.getString("tipo"),object.getString("brouchureId"));
+
+                        Log.d("Ne",object.getJSONObject("beacon").getString("uuid"));
+                    }
+
+                    beaconNotificationsManager.startMonitoring();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            @Override
+            public void onSuccessList(JSONArray response) {
+
+            }
+
+            @Override
+            public void onError(String error) {
+
+            }
+        }, queue, "exposicions/"+ new Session(getApplicationContext()).getExpoId());/** Require id SESSION */
     }
 
-    public void beaconDistance(){
-
-    }
 }

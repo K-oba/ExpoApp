@@ -2,6 +2,8 @@ package com.kaoba.expocr.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -22,7 +24,7 @@ import java.util.HashMap;
  * Created by Antoni Ramirez on 21/6/2017.
  */
 
-public class ViewUserActivity extends Activity {
+public class ViewUserActivity extends AppCompatActivity {
 
     private int rol = 3;
     private static final String EXPO_PATH = "exposicions/user/";
@@ -53,6 +55,8 @@ public class ViewUserActivity extends Activity {
         emailUser = (TextView) findViewById(R.id.textEmailPerson);
         listView = (ListView) findViewById(R.id.listView);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         listView.setAdapter(adapter);
         constants = new Constants();
@@ -112,5 +116,6 @@ public class ViewUserActivity extends Activity {
             }, queue, EXPO_PATH.concat("1"));
         }
     }
+
 
 }
