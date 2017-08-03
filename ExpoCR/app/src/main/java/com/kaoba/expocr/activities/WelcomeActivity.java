@@ -87,6 +87,15 @@ public class WelcomeActivity extends AppCompatActivity
             }
         });
 
+        FloatingActionButton searchExpo = (FloatingActionButton) findViewById(R.id.filterExpoFloatingButton);
+        assert searchExpo != null;
+        searchExpo.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(WelcomeActivity.this, ViewExpoByFilter.class);
+                startActivity(intent);
+            }
+        });
+
 //        Button standList = (Button) findViewById(R.id.buttonStands);
 //        assert standList != null;
 //        expoList.setOnClickListener(new View.OnClickListener() {
