@@ -22,13 +22,14 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 public class QuestionsActivity extends Activity {
-    private static final String CHARLA_PATH = "charlas/";
+    private static final String CHARLA_PATH = "charlasByExpo/";
     private static final String EXPO_PATH = "exposicions/";
     private Constants constants;
     private JSONArray preguntas;
 
-    private TextView expoName;
-    private ListView questionsList;
+
+    //private TextView expoName;
+    //private ListView questionsList;
     ArrayAdapter<String> adapter;
     HashMap<String, Object> listItem;
     private String[] requestList = new String[]{};
@@ -38,18 +39,18 @@ public class QuestionsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
         constants = new Constants();
-        expoName = (TextView) findViewById(R.id.nombreExpo);
-        questionsList = (ListView) findViewById(R.id.listViewQuestions);
+        //expoName = (TextView) findViewById(R.id.nombreExpo);
+        //questionsList = (ListView) findViewById(R.id.listViewQuestions);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_2);
-        questionsList.setAdapter(adapter);
-        try {
-            getExpo();
-            getCharla();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        //questionsList.setAdapter(adapter);
+//        try {
+//            //getExpo();
+//            //getCharla();
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
     }
-
+//
     public void getCharla() throws JSONException {
         final RequestQueue queue = Volley.newRequestQueue(this);
         constants.executeGetRequest(new VolleyCallBack() {
@@ -76,26 +77,26 @@ public class QuestionsActivity extends Activity {
         }, queue, CHARLA_PATH.concat("1"));/** Require id SESSION */
     }
 
-    public void getExpo() throws JSONException {
-        final RequestQueue queue = Volley.newRequestQueue(this);
-        constants.executeGetRequest(new VolleyCallBack() {
-            @Override
-            public void onSuccess(JSONObject response) {
-                try {
-                    expoName.setText(response.getString("nombre"));
-                }catch (JSONException e){
-                    e.printStackTrace();
-                }
-            }
-            @Override
-            public void onSuccessList(JSONArray response) {
-
-            }
-
-            @Override
-            public void onError(String error) {
-
-            }
-        }, queue, EXPO_PATH.concat("1"));/** Require id SESSION */
-    }
+//    public void getExpo() throws JSONException {
+//        final RequestQueue queue = Volley.newRequestQueue(this);
+//        constants.executeGetRequest(new VolleyCallBack() {
+//            @Override
+//            public void onSuccess(JSONObject response) {
+//                try {
+//                    expoName.setText(response.getString("nombre"));
+//                }catch (JSONException e){
+//                    e.printStackTrace();
+//                }
+//            }
+//            @Override
+//            public void onSuccessList(JSONArray response) {
+//
+//            }
+//
+//            @Override
+//            public void onError(String error) {
+//
+//            }
+//        }, queue, EXPO_PATH.concat("1"));/** Require id SESSION */
+//    }
 }
