@@ -74,7 +74,13 @@
             android:exported="true"
             android:label="@string/title_activity_stand_list"
             android:theme="@style/AppTheme" />
-        <activity android:name=".activities.StadisticsMenuActivity">
+        <activity android:name=".activities.StadisticsMenuActivity" />
+        <activity
+            android:name=".activities.QuestionsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.ListQAActivity"
+            android:exported="true">
         </activity>
     </application>
 

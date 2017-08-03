@@ -41,12 +41,14 @@ public class LiveExpositionsActivity extends Activity {
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
         executeRequest();
+        //
         ListView listview = (ListView) findViewById(R.id.liveListViewPOJO);
         assert listview != null;
         ImageView image = (ImageView) findViewById(R.id.imageexpolist);
         Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500393003/beacon-illustration-1024x673_bfpl6y.jpg").into(image);
         ImageView logo = (ImageView) findViewById(R.id.imageimagelogoexpo);
         Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500361962/expocr-vale_720_mnb6qb.png").into(logo);
+        //
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
