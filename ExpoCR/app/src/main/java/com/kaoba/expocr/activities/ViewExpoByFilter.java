@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SimpleAdapter;
@@ -50,7 +51,7 @@ public class ViewExpoByFilter extends AppCompatActivity {
     TextView startDate;
     TextView endDate;
     EditText name;
-    Button btnSearch;
+
     int mYear, mMonth, mDay;
     private String finalFath = "exposicions/byFilters/";
     private Constants constants;
@@ -72,14 +73,26 @@ public class ViewExpoByFilter extends AppCompatActivity {
         startDate = (TextView) findViewById(R.id.startDate);
         endDate = (TextView) findViewById(R.id.endDate);
         name = (EditText) findViewById(R.id.name);
+
         constants = new Constants();
         listView = (ListView) findViewById(R.id.listView);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        btnSearch = (Button) findViewById(R.id.btnSearch);
-        btnSearch.setOnClickListener(new View.OnClickListener() {
+        setFinalFath("exposicions");
+        executeRequest("");
+
+        //btnSearch = (Button) findViewById(R.id.btnSearch);
+        //images
+        //Images
+        ImageView imgBtnFilter = (ImageView) findViewById(R.id.btnSearchExpoFilter);
+        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1501798791/magnify_1_q4zusz.png").into(imgBtnFilter);
+        ImageView imgBtnStartDate = (ImageView) findViewById(R.id.imgStartDate);
+        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1501798071/calendar-question_2_qshtyf.png").into(imgBtnStartDate);
+        ImageView imgBtnEndDate = (ImageView) findViewById(R.id.imgEndDate);
+        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1501798075/calendar-range_2_holjdv.png").into(imgBtnEndDate);
+        imgBtnFilter.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 try {
@@ -96,7 +109,7 @@ public class ViewExpoByFilter extends AppCompatActivity {
                         initialDate = dateFormat.parse(start);
                         finalDate = dateFormat.parse(end);
 
-                        if(finalDate.after(initialDate)) {
+                        if(finalDate.after(initialDate) || finalDate.equals(initialDate)) {
                             if (!expoName.isEmpty() && start.equals(DEFAULT_START_DATE) && end.equals(DEFAULT_END_DATE)) {
                                 setFinalFath("exposicions/likeName/");
                                 parameters = expoName;
@@ -125,6 +138,7 @@ public class ViewExpoByFilter extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Calendar mcurrentDate = Calendar.getInstance();
+
                 mYear = mcurrentDate.get(Calendar.YEAR);
                 mMonth = mcurrentDate.get(Calendar.MONTH);
                 mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
@@ -137,6 +151,7 @@ public class ViewExpoByFilter extends AppCompatActivity {
                         startDate.setText(day + "-" + month + "-" + selectedyear);
                     }
                 }, mYear, mMonth, mDay);
+
                 mDatePicker.setTitle("Select date");
                 mDatePicker.show();
             }
