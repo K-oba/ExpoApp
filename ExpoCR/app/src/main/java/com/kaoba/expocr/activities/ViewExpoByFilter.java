@@ -52,7 +52,6 @@ public class ViewExpoByFilter extends AppCompatActivity {
     TextView endDate;
     EditText name;
 
-    Button btnSearch;
     int mYear, mMonth, mDay;
     private String finalFath = "exposicions/byFilters/";
     private Constants constants;
@@ -81,6 +80,9 @@ public class ViewExpoByFilter extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        setFinalFath("exposicions");
+        executeRequest("");
+
         //btnSearch = (Button) findViewById(R.id.btnSearch);
         //images
         //Images
@@ -107,7 +109,7 @@ public class ViewExpoByFilter extends AppCompatActivity {
                         initialDate = dateFormat.parse(start);
                         finalDate = dateFormat.parse(end);
 
-                        if(finalDate.after(initialDate)) {
+                        if(finalDate.after(initialDate) || finalDate.equals(initialDate)) {
                             if (!expoName.isEmpty() && start.equals(DEFAULT_START_DATE) && end.equals(DEFAULT_END_DATE)) {
                                 setFinalFath("exposicions/likeName/");
                                 parameters = expoName;
