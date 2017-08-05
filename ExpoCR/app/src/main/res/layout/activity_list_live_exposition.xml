@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:layout_marginRight="40dp"
         android:background="@color/caldroid_white"
+        android:gravity="center"
         android:orientation="vertical"
         android:weightSum="1">
 
@@ -24,7 +25,7 @@
         <ImageView
             android:id="@+id/imageexpolist"
             android:layout_width="match_parent"
-            android:layout_height="231dp" />
+            android:layout_height="169dp" />
 
         <TextView
             android:id="@+id/textView3"
@@ -34,8 +35,8 @@
 
         <include
             layout="@layout/content_list_live_exposition"
-            android:layout_width="430dp"
-            android:layout_height="wrap_content" />
+            android:layout_width="340dp"
+            android:layout_height="216dp" />
 
         <TextView
             android:id="@+id/textView4"

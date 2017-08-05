@@ -52,6 +52,7 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
 
     private void setCustomResourceForDates() {
         final SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        context = getApplicationContext();
         if (caldroidFragment != null) {
             constants.executeGetListRequest(new VolleyCallBack() {
                 @Override
@@ -78,7 +79,7 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
                 public void onError(String error) {
 
                 }
-            }, Volley.newRequestQueue(getApplicationContext()), LIVE_EXPO);
+            }, Volley.newRequestQueue(context), LIVE_EXPO);
         }
 
     }
@@ -112,7 +113,6 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
         }
 
         setCustomResourceForDates();
-        context = getApplicationContext();
         // Attach to the activity
         FragmentTransaction t = getSupportFragmentManager().beginTransaction();
         t.replace(R.id.calendar1, caldroidFragment);
@@ -153,7 +153,7 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
                         int[] to = new int[] { android.R.id.text1, android.R.id.text2 };
 
                         int nativeLayout = android.R.layout.two_line_list_item;
-                        listView.setAdapter(new SimpleAdapter(context, list, nativeLayout , from, to));
+                        listView.setAdapter(new SimpleAdapter(getApplicationContext(), list, nativeLayout , from, to));
                     }
 
                     @Override

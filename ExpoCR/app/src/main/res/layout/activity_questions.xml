@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/caldroid_white"
+    tools:context="com.kaoba.expocr.activities.QuestionsActivity">
+
+    <LinearLayout
+        android:layout_width="263dp"
+        android:layout_height="479dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.418"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.161">
+
+        <TextView
+            android:id="@+id/nombreExpo"
+            android:layout_width="371dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.00"
+            android:textSize="14sp"
+            tools:text="Nombre Expo" />
+
+        <ListView
+            android:id="@+id/listViewQuestions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/blueexpo" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="261dp"
+        android:layout_height="119dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.413"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.97">
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_editor_absoluteY="524dp"
+            tools:text="Tu pregunta" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="136dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="34dp"
+            android:text="Enviar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="96dp" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

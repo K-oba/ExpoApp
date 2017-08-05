@@ -17,8 +17,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:background="@color/caldroid_holo_blue_light"
+        android:foregroundGravity="center_horizontal"
         android:visibility="visible"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
 </android.support.constraint.ConstraintLayout>
