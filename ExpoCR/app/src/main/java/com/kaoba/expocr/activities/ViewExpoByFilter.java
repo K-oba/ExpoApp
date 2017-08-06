@@ -83,9 +83,6 @@ public class ViewExpoByFilter extends AppCompatActivity {
         setFinalFath("exposicions");
         executeRequest("");
 
-        //btnSearch = (Button) findViewById(R.id.btnSearch);
-        //images
-        //Images
         ImageView imgBtnFilter = (ImageView) findViewById(R.id.btnSearchExpoFilter);
         Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1501798791/magnify_1_q4zusz.png").into(imgBtnFilter);
         ImageView imgBtnStartDate = (ImageView) findViewById(R.id.imgStartDate);
