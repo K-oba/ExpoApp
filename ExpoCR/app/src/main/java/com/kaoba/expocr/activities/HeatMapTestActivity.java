@@ -16,6 +16,7 @@ public class HeatMapTestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_heat_map_test);
         HeatMap heatMap = (HeatMap) findViewById(R.id.heatmap);
+        assert heatMap != null;
         heatMap.setMinimum(0.0);
         heatMap.setMaximum(100.0);
         Random rand = new Random();

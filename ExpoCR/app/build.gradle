@@ -36,5 +36,6 @@ dependencies {
     compile 'com.cloudinary:cloudinary-android:1.13.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'ca.heartlandsoftware:androidheatmap:1.0'
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
     testCompile 'junit:junit:4.12'
 }
