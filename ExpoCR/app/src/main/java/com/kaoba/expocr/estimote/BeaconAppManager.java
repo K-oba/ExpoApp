@@ -80,12 +80,15 @@ public class BeaconAppManager extends Application {
                     JSONArray jsonArray = response.getJSONArray("stands");
                     for(int i = 0; i < jsonArray.length(); i++){
                         object = jsonArray.getJSONObject(i);
+                        if(!object.getString("beaconId").equals("null")) {
 
-                        String beaconsIds[] = object.getJSONObject("beacon").getString("uuid").split(":");
-                        beaconNotificationsManager.addNotification(
-                                new Beacon(beaconsIds[0],Integer.parseInt(beaconsIds[1]),Integer.parseInt(beaconsIds[2])),object.getString("nombre"),object.getString("tipo"),object.getString("brouchureId"));
 
-                        Log.d("Ne",object.getJSONObject("beacon").getString("uuid"));
+                            String beaconsIds[] = object.getJSONObject("beacon").getString("uuid").split(":");
+                            beaconNotificationsManager.addNotification(
+                                    new Beacon(beaconsIds[0], Integer.parseInt(beaconsIds[1]), Integer.parseInt(beaconsIds[2])), object.getString("nombre"), object.getString("tipo"), object.getString("brouchureId"));
+
+                            Log.d("Ne", object.getJSONObject("beacon").getString("uuid"));
+                        }
                     }
 
                     beaconNotificationsManager.startMonitoring();
