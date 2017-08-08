@@ -53,7 +53,7 @@ public class BeaconAppManager extends Application {
 //                "Hello, world.",
 //                "Goodbye, world.");
         try {
-            setBeaconByStand();
+            setBeacons();
 //            beaconNotificationsManager.startMonitoring();
 
         } catch (JSONException e) {
@@ -67,7 +67,7 @@ public class BeaconAppManager extends Application {
         return beaconNotificationsEnabled;
     }
 
-    public void setBeaconByStand() throws JSONException {
+    public void setBeacons() throws JSONException {
         Constants constants = new Constants();
         final RequestQueue queue = Volley.newRequestQueue(this);
         constants.executeGetRequest(new VolleyCallBack() {

@@ -7,15 +7,28 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.estimote.coresdk.observation.region.beacon.BeaconRegion;
+import com.estimote.coresdk.repackaged.gson_v2_3_1.com.google.gson.JsonObject;
 import com.estimote.coresdk.service.BeaconManager;
+import com.kaoba.expocr.Session;
 import com.kaoba.expocr.activities.BrochureActivity;
 import com.kaoba.expocr.activities.WelcomeActivity;
+import com.kaoba.expocr.constants.Constants;
+import com.kaoba.expocr.constants.VolleyCallBack;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
+
+import android.provider.Settings.Secure;
+
 
 public class BeaconNotificationsManager {
 
@@ -32,16 +45,36 @@ public class BeaconNotificationsManager {
 
     private int notificationID = 0;
 
-    public BeaconNotificationsManager(Context context) {
+    public BeaconNotificationsManager(final Context context) {
         this.context = context;
         beaconManager = new BeaconManager(context);
         beaconManager.setMonitoringListener(new BeaconManager.BeaconMonitoringListener() {
             @Override
             public void onEnteredRegion(BeaconRegion region, List<com.estimote.coresdk.recognition.packets.Beacon> list) {
-                Log.d(TAG, "onEnteredRegion: " + region.getIdentifier());
+                String android_id = Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
+
+                //////////Agregar usuario al contador
+                Constants constants = new Constants();
+                JSONObject json = new JSONObject();
+                try {
+                    json.put("idExpo",new Session(context).getExpoId());
+                    json.put("deviceId",android_id);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    constants.executePostPutRequest(json, Volley.newRequestQueue(context), 1,"historial-usuarios-expos",context, 0);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                /////////bubbleup
+                Log.d(TAG, "onEnteredRegion: " + region + list.toString());
                 String titulo = enterMessages.get(region.getIdentifier());
                 String descripcion = exitMessages.get(region.getIdentifier());
                 String idstand = standIds.get(region.getIdentifier());
+
                 if (titulo != null) {
                     if (descripcion == null) descripcion = "see more";
                     showNotification(titulo,descripcion,idstand);
@@ -79,7 +112,6 @@ public class BeaconNotificationsManager {
             public void onServiceReady() {
                 for (BeaconRegion region : regionsToMonitor) {
                     beaconManager.startMonitoring(region);
-
                 }
 
 //                beaconManager.startRanging(new BeaconRegion("rid",UUID.fromString("B9407F30-F5F8-466E-AFF9-25556B57FE6D"),null,null));
