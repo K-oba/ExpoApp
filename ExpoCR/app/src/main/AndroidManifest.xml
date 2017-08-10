@@ -41,11 +41,7 @@
         <activity android:name=".activities.BrochureActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:configChanges="orientation"
@@ -74,11 +70,7 @@
             android:name=".activities.ViewExpoByFilter"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:configChanges="orientation"
@@ -86,11 +78,6 @@
             android:name=".activities.ViewExpoByCurrentDay"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:configChanges="orientation"
