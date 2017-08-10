@@ -59,6 +59,7 @@ public class BeaconNotificationsManager {
                 try {
                     json.put("idExpo",new Session(context).getExpoId());
                     json.put("deviceId",android_id);
+                    json.put("standId",standIds.get(region.getIdentifier()));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
