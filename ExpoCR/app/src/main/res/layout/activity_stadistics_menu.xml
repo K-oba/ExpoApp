@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/caldroid_white"
-    tools:context="com.kaoba.expocr.activities.StadisticsMenuActivity">
+    tools:context="com.kaoba.expocr.activities.StatisticsMenuActivity">
 
     <LinearLayout
         android:layout_width="348dp"
@@ -29,7 +29,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:orientation="horizontal"></LinearLayout>
+            android:orientation="horizontal" />
 
         <TextView
             android:id="@+id/textView14"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.11"
             android:background="@color/blueexpo"
-            android:text="Keep inform about the expo's activity by clicking one of our stadistics"
+            android:text="@string/keep_informed_about_the_expo_s_activity_by_clicking_one_of_our_statistics"
             android:textAlignment="center"
             android:textColor="@color/caldroid_white"
             android:textSize="18sp" />
@@ -45,7 +45,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="72dp"
-            android:orientation="vertical"></LinearLayout>
+            android:orientation="vertical" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -85,12 +85,12 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="0.75"
                 android:background="@color/Blueexpo"
-                android:text="Heat Map" />
+                android:text="@string/heat_map" />
 
             <LinearLayout
                 android:layout_width="12dp"
                 android:layout_height="64dp"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal" />
 
             <Button
                 android:id="@+id/btnPeopleCounter"
@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.44"
                 android:background="@color/Blueexpo"
-                android:text="People counter" />
+                android:text="@string/people_counter" />
         </LinearLayout>
 
     </LinearLayout>

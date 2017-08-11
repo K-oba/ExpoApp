@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/caldroid_white"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.kaoba.expocr.activities.StandsPieChartActivity"
+    tools:showIn="@layout/activity_stands_pie_chart">
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/piechart"
+        android:layout_width="400dp"
+        android:layout_height="483dp"
+        android:background="@color/caldroid_white"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+</android.support.constraint.ConstraintLayout>

@@ -13,7 +13,7 @@
 
     <string name="network_error">An problem with the network happened, please try again</string>
     <string name="permission_rationale">"Contacts are used to auto complete emails"</string>
-    <string name="title_activity_welcome"></string>
+    <string name="title_activity_welcome" />
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -31,5 +31,15 @@
     <string name="calendar">calendar</string>
     <string name="expo_list">Expo List</string>
     <string name="stand_list">Stand List</string>
+    <string name="expo_calendar">Expo Calendar</string>
+    <string name="statistics">Statistics</string>
+    <string name="timeline">Timeline</string>
+    <string name="qa">QA</string>
+    <string name="search">Search</string>
+    <string name="live">Live</string>
+    <string name="keep_informed_about_the_expo_s_activity_by_clicking_one_of_our_statistics">Keep informed about the expo\'s activity by clicking one of our statistics</string>
+    <string name="heat_map">Heat Map</string>
+    <string name="people_counter">People counter</string>
+    <string name="title_activity_stands_pie_chart">Stand Visitors</string>
 
 </resources>

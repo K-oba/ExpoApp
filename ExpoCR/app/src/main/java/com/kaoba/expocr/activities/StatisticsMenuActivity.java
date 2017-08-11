@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import com.kaoba.expocr.R;
 import com.squareup.picasso.Picasso;
 
-public class StadisticsMenuActivity extends AppCompatActivity {
+public class StatisticsMenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
