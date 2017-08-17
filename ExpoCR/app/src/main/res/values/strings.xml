@@ -41,5 +41,6 @@
     <string name="heat_map">Heat Map</string>
     <string name="people_counter">People counter</string>
     <string name="title_activity_stands_pie_chart">Stand Visitors</string>
+    <string name="sign_up">Sign up</string>
 
 </resources>
