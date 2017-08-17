@@ -14,9 +14,35 @@
         android:layout_height="602dp"
         android:orientation="vertical"
         tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        tools:layout_editor_absoluteX="8dp"
+        android:weightSum="1">
 
 
+        <TextView
+            android:id="@+id/textViewExpoName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.16"
+            android:textAlignment="center"
+            android:textColor="@color/caldroid_black"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textViewExpoDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.16"
+            android:textAlignment="center"
+            android:textColor="@color/caldroid_black"
+            android:textSize="18sp" />
+
+        <ImageButton
+            android:id="@+id/btnNavigate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.16"
+            android:src="@drawable/google_maps"
+            app:srcCompat="@drawable/google_maps" />
 
         <ListView
             android:id="@+id/ViewExpoList"
