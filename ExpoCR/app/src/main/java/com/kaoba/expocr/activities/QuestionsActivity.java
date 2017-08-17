@@ -9,7 +9,10 @@ import com.android.volley.toolbox.Volley;
 import com.kaoba.expocr.R;
 import android.app.Activity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -42,11 +45,25 @@ public class QuestionsActivity extends Activity {
         constants = new Constants();
         Session session = new Session(getApplicationContext());
         Long idCharla = session.getCharlaId();
+        EditText questionText = (EditText) findViewById(R.id.questionText);
+        Button sendButton = (Button) findViewById(R.id.btnSendQ);
         try {
             getCharla(idCharla);
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    addQuestion();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        });
     }
 //
     public void getCharla(Long idCharla) throws JSONException {
@@ -118,5 +135,9 @@ public class QuestionsActivity extends Activity {
         }
         ListAdapter customeAdapter = new QACustomeAdapter(QuestionsActivity.this,listSend);
         questionsList.setAdapter(customeAdapter);
+    }
+
+    public void addQuestion(){
+
     }
 }
