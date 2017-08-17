@@ -51,8 +51,7 @@ public class LiveExpositionsActivity extends Activity {
         //
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
                 ExpositionPOJO expositionPOJO = (ExpositionPOJO) parent.getItemAtPosition(position);
                 Intent intent = new Intent(LiveExpositionsActivity.this, ShowExpoActivity.class);
                 intent.putExtra(EXTRA_MESSAGE, expositionPOJO.getId().toString());

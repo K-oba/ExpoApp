@@ -116,8 +116,11 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:name=".activities.ListQAActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
+        <activity
+            android:name=".activities.TimeLineActivity"
+            android:exported="true"
+            ></activity>
     </application>
 
 </manifest>

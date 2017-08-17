@@ -3,6 +3,7 @@ package com.kaoba.expocr;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 /**
  * Created by Jimmi on 02/07/2017.
@@ -24,6 +25,10 @@ public class Session {
         prefs.edit().putString("userId",id).commit();
     }
 
+    public void setCharlaId(Long charlaId) {prefs.edit().putLong("charlaId", charlaId).apply();}
+
+    public void setTimelineId(Long charlaId) {prefs.edit().putLong("timeLineId", charlaId).apply();}
+
     public String getUsername(){
         return prefs.getString("username","");
     }
@@ -35,6 +40,10 @@ public class Session {
     public String getUserId(){
         return prefs.getString("userId","");
     }
+
+    public Long getCharlaId(){return  prefs.getLong("charlaId",0);}
+
+    public Long getTimelineId(){return  prefs.getLong("timeLineId",0);}
 
     public void logout(){
         prefs.edit().clear().commit();
