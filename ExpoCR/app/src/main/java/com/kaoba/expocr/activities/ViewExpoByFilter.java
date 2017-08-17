@@ -52,7 +52,6 @@ public class ViewExpoByFilter extends AppCompatActivity {
     TextView endDate;
     EditText name;
 
-    Button btnSearch;
     int mYear, mMonth, mDay;
     private String finalFath = "exposicions/byFilters/";
     private Constants constants;
@@ -81,9 +80,9 @@ public class ViewExpoByFilter extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //btnSearch = (Button) findViewById(R.id.btnSearch);
-        //images
-        //Images
+        setFinalFath("exposicions");
+        executeRequest("");
+
         ImageView imgBtnFilter = (ImageView) findViewById(R.id.btnSearchExpoFilter);
         Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1501798791/magnify_1_q4zusz.png").into(imgBtnFilter);
         ImageView imgBtnStartDate = (ImageView) findViewById(R.id.imgStartDate);
@@ -107,7 +106,7 @@ public class ViewExpoByFilter extends AppCompatActivity {
                         initialDate = dateFormat.parse(start);
                         finalDate = dateFormat.parse(end);
 
-                        if(finalDate.after(initialDate)) {
+                        if(finalDate.after(initialDate) || finalDate.equals(initialDate)) {
                             if (!expoName.isEmpty() && start.equals(DEFAULT_START_DATE) && end.equals(DEFAULT_END_DATE)) {
                                 setFinalFath("exposicions/likeName/");
                                 parameters = expoName;

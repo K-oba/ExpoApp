@@ -90,6 +90,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="Start Date"
+                android:textColor="@color/Blueexpo"
                 android:textColorHint="@color/Blueexpo"
                 android:textSize="18sp" />
 
@@ -100,6 +101,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:hint="End Date"
+                android:textColor="@color/Blueexpo"
                 android:textColorHint="@color/Blueexpo"
                 android:textSize="18sp" />
 
@@ -114,7 +116,8 @@
         <TextView
             android:id="@+id/text1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/caldroid_white" />
 
         <TextView
             android:id="@+id/text2"
