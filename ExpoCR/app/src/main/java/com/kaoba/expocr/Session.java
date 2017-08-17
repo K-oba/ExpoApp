@@ -27,6 +27,8 @@ public class Session {
 
     public void setCharlaId(Long charlaId) {prefs.edit().putLong("charlaId", charlaId).apply();}
 
+    public void setTimelineId(Long charlaId) {prefs.edit().putLong("timeLineId", charlaId).apply();}
+
     public String getUsername(){
         return prefs.getString("username","");
     }
@@ -40,6 +42,8 @@ public class Session {
     }
 
     public Long getCharlaId(){return  prefs.getLong("charlaId",0);}
+
+    public Long getTimelineId(){return  prefs.getLong("timeLineId",0);}
 
     public void logout(){
         prefs.edit().clear().commit();
