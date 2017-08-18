@@ -38,12 +38,12 @@ public class WelcomeActivity extends AppCompatActivity
         Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500567668/magnify_dvqs5r.png").into(imageFilterExpo);
         ImageView imageListExpo = (ImageView) findViewById(R.id.simpleListExpoButton);
         Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500568059/format-list-bulleted_stbfzm.png").into(imageListExpo);
-        ImageView imageQA = (ImageView) findViewById(R.id.QAFloatingButton);
-        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500568865/comment-processing-outline_xngwqu.png").into(imageQA);
-        ImageView imageTimeLine = (ImageView) findViewById(R.id.timelineButton);
-        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500569301/chart-timeline_fprp7i.png").into(imageTimeLine);
-        ImageView imageStadistics = (ImageView) findViewById(R.id.stadisticsButton);
-        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500570159/chart-line-variant_hsaedj.png").into(imageStadistics);
+//        ImageView imageQA = (ImageView) findViewById(R.id.QAFloatingButton);
+//        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500568865/comment-processing-outline_xngwqu.png").into(imageQA);
+//        ImageView imageTimeLine = (ImageView) findViewById(R.id.timelineButton);
+//        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500569301/chart-timeline_fprp7i.png").into(imageTimeLine);
+//        ImageView imageStadistics = (ImageView) findViewById(R.id.stadisticsButton);
+//        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500570159/chart-line-variant_hsaedj.png").into(imageStadistics);
         ImageView imageWelcomeHeader = (ImageView) findViewById(R.id.imageWelcomeHeader);
         Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500361962/expocr-vale_720_mnb6qb.png").into(imageWelcomeHeader);
         //Images
@@ -78,14 +78,14 @@ public class WelcomeActivity extends AppCompatActivity
             }
         });
 
-        FloatingActionButton stadistics = (FloatingActionButton) findViewById(R.id.stadisticsButton);
-        assert stadistics != null;
-        stadistics.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this, StadisticsMenuActivity.class);
-                startActivity(intent);
-            }
-        });
+//        FloatingActionButton stadistics = (FloatingActionButton) findViewById(R.id.stadisticsButton);
+//        assert stadistics != null;
+//        stadistics.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Intent intent = new Intent(WelcomeActivity.this, StadisticsMenuActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         FloatingActionButton searchExpo = (FloatingActionButton) findViewById(R.id.filterExpoFloatingButton);
         assert searchExpo != null;
@@ -96,23 +96,23 @@ public class WelcomeActivity extends AppCompatActivity
             }
         });
 
-        FloatingActionButton goQA = (FloatingActionButton) findViewById(R.id.QAFloatingButton);
-        assert goQA != null;
-        goQA.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this, ListQAActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        FloatingActionButton goTL = (FloatingActionButton) findViewById(R.id.timelineButton);
-        assert goTL != null;
-        goTL.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this, TimeLineActivity.class);
-                startActivity(intent);
-            }
-        });
+//        FloatingActionButton goQA = (FloatingActionButton) findViewById(R.id.QAFloatingButton);
+//        assert goQA != null;
+//        goQA.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Intent intent = new Intent(WelcomeActivity.this, ListQAActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        FloatingActionButton goTL = (FloatingActionButton) findViewById(R.id.timelineButton);
+//        assert goTL != null;
+//        goTL.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Intent intent = new Intent(WelcomeActivity.this, TimeLineActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
 
