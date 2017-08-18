@@ -1,6 +1,7 @@
 package com.kaoba.expocr.activities;
 
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -123,12 +124,22 @@ public class ShowExpoActivity extends AppCompatActivity {
 
 
                     // Colocar en un boton!
-                    Uri gmmIntentUri = Uri.parse("google.navigation:q="+coordenadas);
-                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                    mapIntent.setPackage("com.google.android.apps.maps");
-                    if (mapIntent.resolveActivity(getPackageManager()) != null) {
+
+                        ImageButton button = (ImageButton) findViewById(R.id.btnNavigate);
+                        button.setOnClickListener(new View.OnClickListener(){
+
+                            @Override
+                            public void onClick(View v) {
+                                Uri gmmIntentUri = Uri.parse("google.navigation:q="+coordenadas);
+                                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                                mapIntent.setPackage("com.google.android.apps.maps");
+                                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                                    startActivity(mapIntent);
+                                }
+                            }
+                        });
 //                        startActivity(mapIntent);
-                    }
+
 
                     //////////////////MAPS
                 } catch (JSONException e) {
