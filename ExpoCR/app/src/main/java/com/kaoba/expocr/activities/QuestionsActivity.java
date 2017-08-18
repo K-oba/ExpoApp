@@ -47,8 +47,9 @@ public class QuestionsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("HOLA","Entrando");
         Session session = new Session(getApplicationContext());
-        if(session.getUserId()!= null){
+        //if(session.getUserId()!= null){
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_questions);
             constants = new Constants();
@@ -72,7 +73,7 @@ public class QuestionsActivity extends Activity {
                 }
 
             });
-        }
+        //}
     }
 //
     public void getCharla(Long idCharla) throws JSONException {
@@ -95,6 +96,7 @@ public class QuestionsActivity extends Activity {
                         item.put("Question",preguntas.getJSONObject(i).getString("pregunta"));
                         item.put("User",userId.toString());
                         list.add(item);
+                        Log.d("HOLA","Entrando");
                     }
                     getUser(list);
                     //ArrayAdapter<HashMap<String, String>> adapter = new ArrayAdapter<HashMap<String, String>>(QuestionsActivity.this, android.R.layout.simple_list_item_1, list);
@@ -109,10 +111,11 @@ public class QuestionsActivity extends Activity {
             public void onError(String error) {
 
             }
-        }, queue, CHARLA_PATH.concat(session.getExpoId().toString()));/** Require id SESSION */
+        }, queue, CHARLA_PATH.concat("1"));/** Require id SESSION */
     }
 
     public void getUser(ArrayList<HashMap<String, String>> list) throws JSONException {
+        Log.d("HOLA","Entrando");
         listSend = new ArrayList<HashMap<String, String>>(list.size());
         questionsList = (ListView) findViewById(R.id.listViewQuestions);
         for(int i = 0; i<list.size();i++){
@@ -123,6 +126,7 @@ public class QuestionsActivity extends Activity {
                 @Override
                 public void onSuccess(JSONObject response) {
                     try {
+                        Log.d("HERE IA MM","OPEN ARMS");
                         HashMap<String, String> item = new HashMap<String, String>();
                         item.put("User", response.getString("nombre"));
                         item.put("Question",question);
