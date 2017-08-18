@@ -1,21 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/caldroid_white">
+    android:background="@color/caldroid_white"
+    tools:context="com.kaoba.expocr.activities.ViewExpoByCurrentDay">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:foregroundGravity="center_horizontal"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_width="416dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginRight="40dp"
+        android:background="@color/caldroid_white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/imageimagelogoexpo"
+            android:layout_width="wrap_content"
+            android:layout_height="94dp"
+            app:srcCompat="@drawable/ic_menu_camera" />
+
+        <ImageView
+            android:id="@+id/imageexpolist"
+            android:layout_width="276dp"
+            android:layout_height="152dp"
+            android:layout_gravity="center_horizontal"
+            android:foregroundGravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/aux"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/caldroid_white"
+            android:visibility="invisible" />
+
 
         <ListView
             android:id="@+id/listView"
-            android:layout_width="384dp"
-            android:layout_height="419dp"
-            android:background="@color/blueexpo" />
+            android:layout_width="226dp"
+            android:layout_height="242dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/caldroid_white" />
 
         <TextView
             android:id="@+id/text1"
@@ -30,4 +58,4 @@
 
 
     </LinearLayout>
-</ScrollView>
+</android.support.design.widget.CoordinatorLayout>

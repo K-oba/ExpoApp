@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -46,7 +47,10 @@ public class ViewExpoByCurrentDay extends AppCompatActivity {
     private String finalFath = "exposicions/byDay/";
     private Constants constants;
     private long expoId;
-    public String getFinalFath() { return finalFath; }
+
+    public String getFinalFath() {
+        return finalFath;
+    }
 
 
     @Override
@@ -57,6 +61,12 @@ public class ViewExpoByCurrentDay extends AppCompatActivity {
         constants = new Constants();
 
         session = new Session(this);
+
+        ImageView image = (ImageView) findViewById(R.id.imageexpolist);
+        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500393003/beacon-illustration-1024x673_bfpl6y.jpg").into(image);
+        ImageView logo = (ImageView) findViewById(R.id.imageimagelogoexpo);
+        Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500361962/expocr-vale_720_mnb6qb.png").into(logo);
+
         listView = (ListView) findViewById(R.id.listView);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -101,13 +111,8 @@ public class ViewExpoByCurrentDay extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-                String[] from = new String[]{"Name", "Date"};
-
-                int[] to = new int[]{android.R.id.text1, android.R.id.text2};
-
-                int nativeLayout = android.R.layout.two_line_list_item;
-
-                listView.setAdapter(new SimpleAdapter(getApplicationContext(), list, nativeLayout, from, to));
+                ListAdapter customeAdapter = new ExpoFilterCustomeAdapter(getApplicationContext(), list);
+                listView.setAdapter(customeAdapter);
             }
 
             @Override
