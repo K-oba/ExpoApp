@@ -52,7 +52,7 @@ public class ShowExpoActivity extends AppCompatActivity {
         constants = new Constants();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Session session = new Session(getApplicationContext());
+        final Session session = new Session(getApplicationContext());
         try {
             loadExpoInfo(session.getExpoId());
         } catch (JSONException e) {
@@ -77,12 +77,15 @@ public class ShowExpoActivity extends AppCompatActivity {
         });
 
         if(session.getUserId()!=null){
+            Log.d("USERID",session.getUserId());
             FloatingActionButton goQA = (FloatingActionButton) findViewById(R.id.btnQA);
             assert goQA != null;
             goQA.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent intent = new Intent(ShowExpoActivity.this, QuestionsActivity.class);
-                    startActivity(intent);
+                    if(!session.getUserId().isEmpty()){
+                        Intent intent = new Intent(ShowExpoActivity.this, QuestionsActivity.class);
+                        startActivity(intent);
+                    }
                 }
             });
 
@@ -90,8 +93,10 @@ public class ShowExpoActivity extends AppCompatActivity {
             assert goTL != null;
             goTL.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent intent = new Intent(ShowExpoActivity.this, TimeLineActivity.class);
-                    startActivity(intent);
+                    if(!session.getUserId().isEmpty()) {
+                        Intent intent = new Intent(ShowExpoActivity.this, TimeLineActivity.class);
+                        startActivity(intent);
+                    }
                 }
             });
 
@@ -99,8 +104,10 @@ public class ShowExpoActivity extends AppCompatActivity {
             assert stadistics != null;
             stadistics.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent intent = new Intent(ShowExpoActivity.this, StadisticsMenuActivity.class);
-                    startActivity(intent);
+                    if(!session.getUserId().isEmpty()) {
+                        Intent intent = new Intent(ShowExpoActivity.this, StadisticsMenuActivity.class);
+                        startActivity(intent);
+                    }
                 }
             });
         }

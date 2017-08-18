@@ -41,23 +41,24 @@ public class QuestionsActivity extends Activity {
     private ArrayList<HashMap<String, String>> listSend;
     private ListView questionsList;
     private ListAdapter customeAdapter;
-    private String EXPOSICIONID = "expo";
+    private String EXPOSICIONID = "exposicionId";
     private String PREGUNTA = "pregunta";
-    private String USUARIOID = "";
+    private String USUARIOID = "usuarioId";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d("HOLA","Entrando");
         Session session = new Session(getApplicationContext());
-        //if(session.getUserId()!= null){
+        if(session.getUserId()!= null){
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_questions);
             constants = new Constants();
-            Long idCharla = session.getCharlaId();
+            //Long idCharla = session.getCharlaId();
             Button sendButton = (Button) findViewById(R.id.btnSendQ);
             EditText questionTxt = (EditText) findViewById(R.id.questionText);
             try {
-                getCharla(idCharla);
+                Log.d("HOLA","getCharla");
+                getCharla();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -73,13 +74,13 @@ public class QuestionsActivity extends Activity {
                 }
 
             });
-        //}
+        }
     }
 //
-    public void getCharla(Long idCharla) throws JSONException {
+    public void getCharla( ) throws JSONException {
         final Session session = new Session(getApplicationContext());
         final RequestQueue queue = Volley.newRequestQueue(this);
-        constants.executeGetRequest(new VolleyCallBack() {
+        constants.executeGetListRequest(new VolleyCallBack() {
             @Override
             public void onSuccess(JSONObject response) {
 
@@ -90,13 +91,14 @@ public class QuestionsActivity extends Activity {
                     preguntas = response;
                     ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>(response.length());
                     ListView questionsList = (ListView) findViewById(R.id.listViewQuestions);
+
                     for (int i =0;i<preguntas.length();i++){
                         HashMap<String, String> item = new HashMap<String, String>();
                         Long userId = preguntas.getJSONObject(i).getLong("usuarioId");
                         item.put("Question",preguntas.getJSONObject(i).getString("pregunta"));
                         item.put("User",userId.toString());
                         list.add(item);
-                        Log.d("HOLA","Entrando");
+                        Log.d("HOLA","llene la lista");
                     }
                     getUser(list);
                     //ArrayAdapter<HashMap<String, String>> adapter = new ArrayAdapter<HashMap<String, String>>(QuestionsActivity.this, android.R.layout.simple_list_item_1, list);
@@ -111,7 +113,7 @@ public class QuestionsActivity extends Activity {
             public void onError(String error) {
 
             }
-        }, queue, CHARLA_PATH.concat("1"));/** Require id SESSION */
+        }, queue, CHARLA_PATH.concat(session.getExpoId().toString()));/** Require id SESSION */
     }
 
     public void getUser(ArrayList<HashMap<String, String>> list) throws JSONException {
@@ -160,7 +162,7 @@ public class QuestionsActivity extends Activity {
             item.put("User", userName);
             item.put("Question",questionText.getText().toString());
             listSend.add(item);
-            //Long exposicionId = session.getExpoId();
+            Long exposicionId = session.getExpoId();
             customeAdapter = new QACustomeAdapter(QuestionsActivity.this,listSend);
             questionsList.setAdapter(customeAdapter);
             try {
@@ -169,7 +171,7 @@ public class QuestionsActivity extends Activity {
 
                 obj.put(PREGUNTA, questionText.getText().toString());
                 obj.put(USUARIOID, session.getUserId());
-                obj.put(EXPOSICIONID, 1);
+                obj.put(EXPOSICIONID, exposicionId);
                 constants.executePostPutRequest(obj, Volley.newRequestQueue(this), 1, QUESTION_PATH, getApplicationContext(), 2);
             }catch (Exception e){
                 throw new Exception(e.getMessage());
