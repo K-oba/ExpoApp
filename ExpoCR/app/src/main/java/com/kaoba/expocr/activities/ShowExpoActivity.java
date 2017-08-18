@@ -2,6 +2,7 @@ package com.kaoba.expocr.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -72,6 +73,33 @@ public class ShowExpoActivity extends AppCompatActivity {
                 }
             }
         });
+
+        FloatingActionButton goQA = (FloatingActionButton) findViewById(R.id.btnQA);
+        assert goQA != null;
+        goQA.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(ShowExpoActivity.this, ListQAActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        FloatingActionButton goTL = (FloatingActionButton) findViewById(R.id.btnTL);
+        assert goTL != null;
+        goTL.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(ShowExpoActivity.this, TimeLineActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        FloatingActionButton stadistics = (FloatingActionButton) findViewById(R.id.btnChart);
+        assert stadistics != null;
+        stadistics.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(ShowExpoActivity.this, StadisticsMenuActivity.class);
+                startActivity(intent);
+            }
+        });
 //
 //        SupportMapFragment mapFragment =
 //                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -88,13 +116,15 @@ public class ShowExpoActivity extends AppCompatActivity {
                     txtExpoName.setText(response.getString(NAME));
                     TextView txtExpoDesc = (TextView) findViewById(R.id.textViewExpoDesc);
                     txtExpoDesc.setText(response.getString("descripcion"));
-                    ImageButton btnExpoNav = (ImageButton) findViewById(R.id.btnNavigate);
+                    //ImageButton btnExpoNav = (ImageButton) findViewById(R.id.btnNavigate);
                     ArrayList<Object> items = new ArrayList<>();
-                    items.add(response.getString(NAME));
-                    items.add(response.getString("descripcion"));
+                    //items.add(response.getString(NAME));
+                    //items.add(response.getString("descripcion"));
                     String start = response.getString("fechaInicio").substring(0, 10);
                     String end = response.getString("fechaFin").substring(0, 10);
-                    items.add("From ".concat(start).concat(" to ").concat(end));
+                    TextView txtDate =(TextView) findViewById(R.id.textViewDate);
+                    txtDate.setText("From ".concat(start).concat(" to ").concat(end));
+                    //items.add("From ".concat(start).concat(" to ").concat(end));
                     coordenadas = response.getString("coordenadas");
 
                     if (response.getJSONArray("stands").length() > 0) {
