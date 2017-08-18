@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">ExpoCR</string>
-
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -10,19 +9,16 @@
     <string name="error_invalid_password">Password too short</string>
     <string name="error_incorrect_password">Wrong Password</string>
     <string name="error_field_required">Field required</string>
-
     <string name="network_error">An problem with the network happened, please try again</string>
     <string name="permission_rationale">"Contacts are used to auto complete emails"</string>
     <string name="title_activity_welcome" />
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
     <string name="title_activity_create_stand">Create Stand</string>
     <string name="title_activity_list_live_exposition">Live Expositions</string>
     <string name="logout">Logout</string>
-    <string name="title_activity_show_expo"></string>
+    <string name="title_activity_show_expo" />
     <string name="title_activity_stand_list">Stand List</string>
     <string name="title_activity_show_stand">Stand Information</string>
     <string name="expo_no_stands">Exposition has no stands yet</string>
@@ -31,7 +27,6 @@
     <string name="calendar">calendar</string>
     <string name="expo_list">Expo List</string>
     <string name="stand_list">Stand List</string>
-<<<<<<< HEAD
     <string name="expo_calendar">Expo Calendar</string>
     <string name="statistics">Statistics</string>
     <string name="timeline">Timeline</string>
@@ -43,8 +38,6 @@
     <string name="people_counter">People counter</string>
     <string name="title_activity_stands_pie_chart">Stand Visitors</string>
     <string name="sign_up">Sign up</string>
-=======
     <string name="title_activity_time_line">TimeLineActivity</string>
->>>>>>> develop
-
+    <string name="visitors_by_stand">Visitors by stand</string>
 </resources>
