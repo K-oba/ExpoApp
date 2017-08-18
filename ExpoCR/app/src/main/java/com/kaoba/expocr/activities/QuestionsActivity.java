@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class QuestionsActivity extends Activity {
-    private static final String CHARLA_PATH = "charlas/";
+    private static final String CHARLA_PATH = "preguntasByExpo/";
     private static final String USER_PATH = "usuarios/";
     private static final String QUESTION_PATH ="preguntas";
     private String NOMBRE;
@@ -47,40 +47,46 @@ public class QuestionsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_questions);
-        constants = new Constants();
         Session session = new Session(getApplicationContext());
-        Long idCharla = session.getCharlaId();
-        Button sendButton = (Button) findViewById(R.id.btnSendQ);
-        EditText questionTxt = (EditText) findViewById(R.id.questionText);
-        try {
-            getCharla(idCharla);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        sendButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    addQuestion();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        if(session.getUserId()!= null){
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_questions);
+            constants = new Constants();
+            Long idCharla = session.getCharlaId();
+            Button sendButton = (Button) findViewById(R.id.btnSendQ);
+            EditText questionTxt = (EditText) findViewById(R.id.questionText);
+            try {
+                getCharla(idCharla);
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
 
-        });
+            sendButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try {
+                        addQuestion();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            });
+        }
     }
 //
     public void getCharla(Long idCharla) throws JSONException {
-        
+        final Session session = new Session(getApplicationContext());
         final RequestQueue queue = Volley.newRequestQueue(this);
         constants.executeGetRequest(new VolleyCallBack() {
             @Override
             public void onSuccess(JSONObject response) {
+
+            }
+            @Override
+            public void onSuccessList(JSONArray response) {
                 try {
-                    preguntas = response.getJSONArray("preguntas");
+                    preguntas = response;
                     ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>(response.length());
                     ListView questionsList = (ListView) findViewById(R.id.listViewQuestions);
                     for (int i =0;i<preguntas.length();i++){
@@ -98,16 +104,12 @@ public class QuestionsActivity extends Activity {
                     e.printStackTrace();
                 }
             }
-            @Override
-            public void onSuccessList(JSONArray response) {
-
-            }
 
             @Override
             public void onError(String error) {
 
             }
-        }, queue, CHARLA_PATH.concat("1"));/** Require id SESSION */
+        }, queue, CHARLA_PATH.concat(session.getExpoId().toString()));/** Require id SESSION */
     }
 
     public void getUser(ArrayList<HashMap<String, String>> list) throws JSONException {

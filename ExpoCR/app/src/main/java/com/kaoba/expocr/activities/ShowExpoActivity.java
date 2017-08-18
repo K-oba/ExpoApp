@@ -74,32 +74,34 @@ public class ShowExpoActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton goQA = (FloatingActionButton) findViewById(R.id.btnQA);
-        assert goQA != null;
-        goQA.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(ShowExpoActivity.this, ListQAActivity.class);
-                startActivity(intent);
-            }
-        });
+        if(session.getUserId()!=null){
+            FloatingActionButton goQA = (FloatingActionButton) findViewById(R.id.btnQA);
+            assert goQA != null;
+            goQA.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(ShowExpoActivity.this, QuestionsActivity.class);
+                    startActivity(intent);
+                }
+            });
 
-        FloatingActionButton goTL = (FloatingActionButton) findViewById(R.id.btnTL);
-        assert goTL != null;
-        goTL.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(ShowExpoActivity.this, TimeLineActivity.class);
-                startActivity(intent);
-            }
-        });
+            FloatingActionButton goTL = (FloatingActionButton) findViewById(R.id.btnTL);
+            assert goTL != null;
+            goTL.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(ShowExpoActivity.this, TimeLineActivity.class);
+                    startActivity(intent);
+                }
+            });
 
-        FloatingActionButton stadistics = (FloatingActionButton) findViewById(R.id.btnChart);
-        assert stadistics != null;
-        stadistics.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(ShowExpoActivity.this, StadisticsMenuActivity.class);
-                startActivity(intent);
-            }
-        });
+            FloatingActionButton stadistics = (FloatingActionButton) findViewById(R.id.btnChart);
+            assert stadistics != null;
+            stadistics.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(ShowExpoActivity.this, StadisticsMenuActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
 //
 //        SupportMapFragment mapFragment =
 //                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
