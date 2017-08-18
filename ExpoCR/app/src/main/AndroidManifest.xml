@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-feature android:name="android.hardware.camera" android:required="false"></uses-feature>
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -133,6 +134,15 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".activities.TimeLineActivity"
+            android:exported="true"
+            ></activity>
+
+        <activity
+            android:name=".activities.ViewCamera"
+            android:exported="true"
+            ></activity>
+	<activity
             android:name=".activities.MapsActivity"
             android:label="@string/title_activity_maps"/>
     </application>
