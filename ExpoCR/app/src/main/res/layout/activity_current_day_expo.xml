@@ -31,10 +31,21 @@
             android:foregroundGravity="center_horizontal" />
 
         <TextView
-            android:id="@+id/aux"
-            android:layout_width="match_parent"
+            android:id="@+id/aux2"
+            android:layout_width="286dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/caldroid_white"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center"
+            android:textColor="@color/blueexpo"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/aux"
+            android:layout_width="286dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center"
+            android:textColor="@color/blueexpo"
             android:visibility="invisible" />
 
 
