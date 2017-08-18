@@ -41,27 +41,30 @@ public class TimeLineActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_time_line);
-        Button postButton = (Button) findViewById(R.id.btnPublish);
+        Session session = new Session(getApplicationContext());
+        if(session.getUserId() != null){
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_time_line);
+            Button postButton = (Button) findViewById(R.id.btnPublish);
 
-        try {
-            getTimeLine();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        postButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    addPost();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            try {
+                getTimeLine();
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
 
-        });
+            postButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try {
+                        addPost();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            });
+        }
     }
 
     public void getTimeLine() throws JSONException {
