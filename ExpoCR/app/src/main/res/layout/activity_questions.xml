@@ -16,7 +16,21 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.161">
+        app:layout_constraintVertical_bias="0.161"
+        android:id="@+id/linearLayout">
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.00"
+            android:backgroundTint="@color/blueexpo"
+            android:text="Active"
+            android:textColor="@color/Blueexpo"
+            android:textColorLink="@color/pinkexpo"
+            app:buttonTint="@color/blueexpo"
+            tools:layout_editor_absoluteX="152dp"
+            tools:layout_editor_absoluteY="0dp" />
 
         <TextView
             android:id="@+id/nombreExpo"
@@ -30,7 +44,7 @@
             android:id="@+id/listViewQuestions"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/blueexpo" />
+            android:background="@color/caldroid_white" />
 
     </LinearLayout>
 
@@ -46,22 +60,27 @@
         app:layout_constraintVertical_bias="0.97">
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/questionText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
+            android:textColor="@color/caldroid_black"
+            android:textColorHint="@color/caldroid_black"
+            android:textColorLink="@color/Blueexpo"
+            android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             tools:layout_editor_absoluteY="524dp"
             tools:text="Tu pregunta" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnSendQ"
             android:layout_width="136dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="34dp"
-            android:text="Enviar"
+            android:background="@color/blueexpo"
+            android:text="Send"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="96dp" />
     </LinearLayout>

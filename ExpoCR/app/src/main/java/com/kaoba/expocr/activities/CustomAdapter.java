@@ -17,7 +17,7 @@ import android.util.Log;
 class CustomAdapter extends ArrayAdapter<String>{
     CustomAdapter(Context  context, String [] namesArray){
        super(context,R.layout.custome_qa_list,namesArray);
-        Log.d("Hola Aqui estoy", namesArray[0]);
+        //Log.d("Hola Aqui estoy", namesArray[0]);
     }
 
     @Override
