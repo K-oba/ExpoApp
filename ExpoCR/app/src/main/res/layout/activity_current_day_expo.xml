@@ -8,12 +8,10 @@
     tools:context="com.kaoba.expocr.activities.ViewExpoByCurrentDay">
 
     <LinearLayout
-        android:layout_width="416dp"
+        android:layout_width="409dp"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
         android:layout_marginRight="40dp"
         android:background="@color/caldroid_white"
-        android:gravity="center"
         android:orientation="vertical"
         android:weightSum="1">
 
@@ -21,18 +19,20 @@
             android:id="@+id/imageimagelogoexpo"
             android:layout_width="wrap_content"
             android:layout_height="94dp"
+            android:layout_gravity="center_horizontal"
             app:srcCompat="@drawable/ic_menu_camera" />
 
         <ImageView
             android:id="@+id/imageexpolist"
-            android:layout_width="276dp"
-            android:layout_height="152dp"
+            android:layout_width="528dp"
+            android:layout_height="148dp"
             android:layout_gravity="center_horizontal"
-            android:foregroundGravity="center_horizontal" />
+            android:foregroundGravity="center_horizontal"
+            android:layout_weight="0.66" />
 
         <TextView
             android:id="@+id/aux2"
-            android:layout_width="286dp"
+            android:layout_width="629dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textAlignment="center"
@@ -51,9 +51,10 @@
 
         <ListView
             android:id="@+id/listView"
-            android:layout_width="226dp"
+            android:layout_width="328dp"
             android:layout_height="242dp"
             android:layout_gravity="center_horizontal"
+            android:layout_weight="0.78"
             android:background="@color/caldroid_white" />
 
         <TextView

@@ -1,7 +1,10 @@
 package com.kaoba.expocr.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.kaoba.expocr.R;
@@ -21,5 +24,15 @@ public class StadisticsMenuActivity extends AppCompatActivity {
         ImageView imagePeopleCounter = (ImageView) findViewById(R.id.peopleCounterImage);
         Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500655200/chart-bar-stacked_cpnxxl.png").into(imagePeopleCounter);
         //Images
+
+        Button btnCounter = (Button) findViewById(R.id.btnPeopleCounter);
+        btnCounter.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), CounterActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }
