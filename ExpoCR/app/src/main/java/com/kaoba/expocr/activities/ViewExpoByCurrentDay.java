@@ -43,6 +43,7 @@ public class ViewExpoByCurrentDay extends AppCompatActivity {
 
     ListView listView;
     Session session;
+    TextView text;
 
     private String finalFath = "exposicions/byDay/";
     private Constants constants;
@@ -68,6 +69,7 @@ public class ViewExpoByCurrentDay extends AppCompatActivity {
         Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500361962/expocr-vale_720_mnb6qb.png").into(logo);
 
         listView = (ListView) findViewById(R.id.listView);
+        text = (TextView) findViewById(R.id.aux);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
@@ -110,6 +112,12 @@ public class ViewExpoByCurrentDay extends AppCompatActivity {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                }
+                if(list.size() <= 0){
+
+                    text.setVisibility(View.VISIBLE);
+                    text.setText("There are no expos in progress");
+
                 }
                 ListAdapter customeAdapter = new ExpoFilterCustomeAdapter(getApplicationContext(), list);
                 listView.setAdapter(customeAdapter);
