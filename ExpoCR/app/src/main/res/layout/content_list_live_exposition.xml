@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:background="@color/caldroid_holo_blue_light"
+        android:background="@color/caldroid_white"
         android:foregroundGravity="center_horizontal"
         android:visibility="visible"
         tools:layout_editor_absoluteX="0dp"
