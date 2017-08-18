@@ -10,44 +10,122 @@
     tools:showIn="@layout/activity_show_expo">
 
     <LinearLayout
-        android:layout_width="408dp"
-        android:layout_height="602dp"
+        android:layout_width="417dp"
+        android:layout_height="598dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp"
-        android:weightSum="1">
+        android:weightSum="1"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="8dp">
 
+
+        <LinearLayout
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:divider="@android:drawable/btn_default"
+            android:dividerPadding="@dimen/activity_horizontal_margin"
+            android:orientation="horizontal"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:weightSum="1">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/btnChart"
+                android:layout_width="wrap_content"
+                android:layout_height="54dp"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_weight="0.11"
+                android:clickable="true"
+                android:padding="@dimen/nav_header_vertical_spacing"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/chart_arc" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/btnNavigate"
+                android:layout_width="wrap_content"
+                android:layout_height="51dp"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_weight="0.09"
+                android:clickable="true"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                app:backgroundTint="@color/blueexpo"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/google_maps" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/btnQA"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_weight="0.09"
+                android:clickable="true"
+                app:backgroundTint="@color/pinkexpo"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/comment_processing_outline" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/btnTL"
+                android:layout_width="wrap_content"
+                android:layout_height="46dp"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_weight="0.11"
+                android:clickable="true"
+                app:backgroundTint="@color/Blueexpo"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/chart_timeline" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textViewExpoName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.16"
+            android:layout_width="321dp"
+            android:layout_height="64dp"
+            android:fontFamily="casual"
             android:textAlignment="center"
             android:textColor="@color/caldroid_black"
-            android:textSize="24sp" />
+            android:textSize="36sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewExpoDesc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.16"
+            android:layout_width="317dp"
+            android:layout_height="34dp"
             android:textAlignment="center"
             android:textColor="@color/caldroid_black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_weight="0.07" />
 
-        <ImageButton
-            android:id="@+id/btnNavigate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.16"
-            android:src="@drawable/google_maps"
-            app:srcCompat="@drawable/google_maps" />
+        <LinearLayout
+            android:layout_width="296dp"
+            android:layout_height="71dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="73dp"
+                android:layout_height="50dp"
+                android:background="@color/caldroid_white"
+                android:src="@drawable/calendar_blank" />
+
+            <TextView
+                android:id="@+id/textViewDate"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:textColor="@color/caldroid_black"
+                android:textSize="18sp" />
+        </LinearLayout>
 
         <ListView
             android:id="@+id/ViewExpoList"
-            android:layout_width="332dp"
-            android:layout_height="251dp"
+            android:layout_width="290dp"
+            android:layout_height="242dp"
             android:layout_gravity="center_horizontal"
             android:background="@color/Blueexpo"
             app:layout_constraintLeft_toLeftOf="parent"

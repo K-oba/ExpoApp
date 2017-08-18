@@ -107,7 +107,7 @@ public class QuestionsActivity extends Activity {
             public void onError(String error) {
 
             }
-        }, queue, CHARLA_PATH.concat(idCharla.toString()));/** Require id SESSION */
+        }, queue, CHARLA_PATH.concat("1"));/** Require id SESSION */
     }
 
     public void getUser(ArrayList<HashMap<String, String>> list) throws JSONException {
