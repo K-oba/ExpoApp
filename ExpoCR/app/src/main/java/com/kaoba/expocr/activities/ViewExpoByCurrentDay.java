@@ -47,6 +47,7 @@ public class ViewExpoByCurrentDay extends AppCompatActivity {
 
     private String finalFath = "exposicions/byDay/";
     private Constants constants;
+    private long[] idsexpos;
     private long expoId;
 
     public String getFinalFath() {
@@ -83,7 +84,7 @@ public class ViewExpoByCurrentDay extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
                 Intent intent = new Intent(getApplicationContext(), ShowExpoActivity.class);
-                session.setExpoId(expoId);
+                session.setExpoId(idsexpos[position]);
 
                 intent.putExtra(EXTRA_MESSAGE, Long.toString(expoId));
                 startActivity(intent);
@@ -101,6 +102,7 @@ public class ViewExpoByCurrentDay extends AppCompatActivity {
             @Override
             public void onSuccessList(JSONArray response) {
                 ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>(response.length());
+                idsexpos = new long[response.length()];
 
                 for (int i = 0; i < response.length(); i++) {
                     try {
@@ -108,6 +110,7 @@ public class ViewExpoByCurrentDay extends AppCompatActivity {
                         item.put("Name", response.getJSONObject(i).getString("nombre"));
                         item.put("Date", "Start " + response.getJSONObject(i).getString("fechaInicio") + " End " + response.getJSONObject(i).getString("fechaFin"));
                         expoId = response.getJSONObject(i).getLong("id");
+                        idsexpos[i] = response.getJSONObject(i).getLong("id");
                         list.add(item);
                     } catch (Exception e) {
                         e.printStackTrace();

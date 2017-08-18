@@ -1,6 +1,8 @@
 package com.kaoba.expocr.activities;
 
 import android.content.Intent;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -106,6 +108,7 @@ public class ShowExpoActivity extends AppCompatActivity {
 //        SupportMapFragment mapFragment =
 //                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 //        mapFragment.getMapAsync(this);
+
     }
 
     private void loadExpoInfo(Long expoId) throws JSONException {
@@ -128,6 +131,8 @@ public class ShowExpoActivity extends AppCompatActivity {
                     txtDate.setText("From ".concat(start).concat(" to ").concat(end));
                     //items.add("From ".concat(start).concat(" to ").concat(end));
                     coordenadas = response.getString("coordenadas");
+                    String[] geo = coordenadas.split(" lng ");
+                    coordenadas = geo[0].substring(4)+","+geo[1];
 
                     if (response.getJSONArray("stands").length() > 0) {
                         JSONArray jsonArray = response.getJSONArray("stands");
@@ -148,6 +153,27 @@ public class ShowExpoActivity extends AppCompatActivity {
                     //Picasso.with(getApplicationContext()).load("http://res.cloudinary.com/duxllywl7/image/upload/v1500354237/stands_swatak.png").into(image);
                     assert listview != null;
                     listview.setAdapter(adapter);
+
+
+                    // Colocar en un boton!
+
+                        ImageButton button = (ImageButton) findViewById(R.id.btnNavigate);
+                        button.setOnClickListener(new View.OnClickListener(){
+
+                            @Override
+                            public void onClick(View v) {
+                                Uri gmmIntentUri = Uri.parse("google.navigation:q="+coordenadas);
+                                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                                mapIntent.setPackage("com.google.android.apps.maps");
+                                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                                    startActivity(mapIntent);
+                                }
+                            }
+                        });
+//                        startActivity(mapIntent);
+
+
+                    //////////////////MAPS
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

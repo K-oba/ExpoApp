@@ -2,7 +2,6 @@ package com.kaoba.expocr.constants;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -28,7 +27,7 @@ import static com.kaoba.expocr.activities.LiveExpositionsActivity.EXTRA_MESSAGE;
 public class Constants {
 
     /***Const variables to validate***/
-    public static final String URL = "http://192.168.43.189:8080/api/";
+    public static final String URL = "http://192.168.100.7:8080/api/";
     /**
      *http://10.0.0.147:8080
      * http://192.168.40.207:8080
@@ -56,9 +55,6 @@ public class Constants {
                                 intent.putExtra(EXTRA_MESSAGE, "");
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 context.startActivity(intent);
-                            }
-                            if(activity ==2){
-                                Log.d("Stay","stay");
                             }
                         }
                     },
