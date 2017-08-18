@@ -73,7 +73,7 @@ public class WelcomeActivity extends AppCompatActivity
         assert expoList != null;
         expoList.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this, LiveExpositionsActivity.class);
+                Intent intent = new Intent(WelcomeActivity.this, ViewExpoByCurrentDay.class);
                 startActivity(intent);
             }
         });

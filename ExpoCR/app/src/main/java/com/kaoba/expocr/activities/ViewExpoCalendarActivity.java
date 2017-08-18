@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -141,19 +142,15 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
                             try {
                                 HashMap<String, String> item = new HashMap<String, String>();
                                 item.put("Name", response.getJSONObject(i).getString("nombre"));
-                                item.put("Date",response.getJSONObject(i).getString("fechaFin"));
+                                item.put("Date", response.getJSONObject(i).getString("fechaFin"));
                                 expoId = response.getJSONObject(i).getLong("id");
                                 list.add(item);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
-                        String[] from = new String[] { "Name", "Date" };
-
-                        int[] to = new int[] { android.R.id.text1, android.R.id.text2 };
-
-                        int nativeLayout = android.R.layout.two_line_list_item;
-                        listView.setAdapter(new SimpleAdapter(getApplicationContext(), list, nativeLayout , from, to));
+                        ListAdapter customeAdapter = new ExpoFilterCustomeAdapter(getApplicationContext(),list);
+                        listView.setAdapter(customeAdapter);
                     }
 
                     @Override
@@ -191,20 +188,6 @@ public class ViewExpoCalendarActivity extends AppCompatActivity {
 
         // Setup Caldroid
         caldroidFragment.setCaldroidListener(listener);
-         session = new Session(this);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position,
-                                    long id) {
-                Intent intent = new Intent(context, ShowExpoActivity.class);
-
-
-                session.setExpoId(expoId);
-                intent.putExtra(EXTRA_MESSAGE,  Long.toString(expoId));
-                startActivity(intent);
-            }
-        });
-
 
     }
 

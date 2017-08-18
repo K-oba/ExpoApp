@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SimpleAdapter;
@@ -176,18 +177,6 @@ public class ViewExpoByFilter extends AppCompatActivity {
             }
         });
 
-        session = new Session(this);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position,
-                                    long id) {
-                Intent intent = new Intent(getApplicationContext(), ShowExpoActivity.class);
-                session.setExpoId(expoId);
-
-                intent.putExtra(EXTRA_MESSAGE, Long.toString(expoId));
-                startActivity(intent);
-            }
-        });
     }
 
     private void executeRequest(String parameters) {
@@ -212,13 +201,9 @@ public class ViewExpoByFilter extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-                String[] from = new String[]{"Name", "Date"};
 
-                int[] to = new int[]{android.R.id.text1, android.R.id.text2};
-
-                int nativeLayout = android.R.layout.two_line_list_item;
-
-                listView.setAdapter(new SimpleAdapter(getApplicationContext(), list, nativeLayout, from, to));
+                ListAdapter customeAdapter = new ExpoFilterCustomeAdapter(getApplicationContext(),list);
+                listView.setAdapter(customeAdapter);
             }
 
             @Override

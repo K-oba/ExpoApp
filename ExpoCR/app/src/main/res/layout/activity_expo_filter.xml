@@ -111,7 +111,7 @@
             android:id="@+id/listView"
             android:layout_width="384dp"
             android:layout_height="419dp"
-            android:background="@color/blueexpo" />
+            android:background="@color/caldroid_white" />
 
         <TextView
             android:id="@+id/text1"
