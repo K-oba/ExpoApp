@@ -22,7 +22,7 @@
     <string name="title_activity_create_stand">Create Stand</string>
     <string name="title_activity_list_live_exposition">Live Expositions</string>
     <string name="logout">Logout</string>
-    <string name="title_activity_show_expo">Exposition Information</string>
+    <string name="title_activity_show_expo"></string>
     <string name="title_activity_stand_list">Stand List</string>
     <string name="title_activity_show_stand">Stand Information</string>
     <string name="expo_no_stands">Exposition has no stands yet</string>
@@ -31,5 +31,6 @@
     <string name="calendar">calendar</string>
     <string name="expo_list">Expo List</string>
     <string name="stand_list">Stand List</string>
+    <string name="title_activity_time_line">TimeLineActivity</string>
 
 </resources>

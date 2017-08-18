@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="34dp"
             android:background="@color/blueexpo"
-            android:text="Enviar"
+            android:text="Send"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="96dp" />
     </LinearLayout>

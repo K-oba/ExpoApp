@@ -8,8 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -82,6 +84,11 @@ public class ShowExpoActivity extends AppCompatActivity {
             @Override
             public void onSuccess(JSONObject response) {
                 try {
+                    TextView txtExpoName = (TextView) findViewById(R.id.textViewExpoName);
+                    txtExpoName.setText(response.getString(NAME));
+                    TextView txtExpoDesc = (TextView) findViewById(R.id.textViewExpoDesc);
+                    txtExpoDesc.setText(response.getString("descripcion"));
+                    ImageButton btnExpoNav = (ImageButton) findViewById(R.id.btnNavigate);
                     ArrayList<Object> items = new ArrayList<>();
                     items.add(response.getString(NAME));
                     items.add(response.getString("descripcion"));

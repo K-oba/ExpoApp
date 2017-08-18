@@ -32,11 +32,18 @@ import java.util.HashMap;
 public class QuestionsActivity extends Activity {
     private static final String CHARLA_PATH = "charlas/";
     private static final String USER_PATH = "usuarios/";
+    private static final String QUESTION_PATH ="preguntas";
     private String NOMBRE;
     private Constants constants;
     private JSONArray preguntas;
     HashMap<String, Object> listItem;
     private String[] requestList = new String[]{};
+    private ArrayList<HashMap<String, String>> listSend;
+    private ListView questionsList;
+    private ListAdapter customeAdapter;
+    private String EXPOSICIONID = "expo";
+    private String PREGUNTA = "pregunta";
+    private String USUARIOID = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +52,8 @@ public class QuestionsActivity extends Activity {
         constants = new Constants();
         Session session = new Session(getApplicationContext());
         Long idCharla = session.getCharlaId();
-        EditText questionText = (EditText) findViewById(R.id.questionText);
         Button sendButton = (Button) findViewById(R.id.btnSendQ);
+        EditText questionTxt = (EditText) findViewById(R.id.questionText);
         try {
             getCharla(idCharla);
         } catch (JSONException e) {
@@ -104,8 +111,8 @@ public class QuestionsActivity extends Activity {
     }
 
     public void getUser(ArrayList<HashMap<String, String>> list) throws JSONException {
-        final ArrayList<HashMap<String, String>> listSend = new ArrayList<HashMap<String, String>>(list.size());
-        ListView questionsList = (ListView) findViewById(R.id.listViewQuestions);
+        listSend = new ArrayList<HashMap<String, String>>(list.size());
+        questionsList = (ListView) findViewById(R.id.listViewQuestions);
         for(int i = 0; i<list.size();i++){
             String id = list.get(i).get("User");
             final String question = list.get(i).get("Question");
@@ -133,11 +140,38 @@ public class QuestionsActivity extends Activity {
                 }
             }, queue, USER_PATH.concat(id));/** Require id SESSION */;
         }
-        ListAdapter customeAdapter = new QACustomeAdapter(QuestionsActivity.this,listSend);
+        customeAdapter = new QACustomeAdapter(QuestionsActivity.this,listSend);
         questionsList.setAdapter(customeAdapter);
     }
 
-    public void addQuestion(){
+    public void addQuestion() throws Exception{
+        EditText questionText = (EditText) findViewById(R.id.questionText);
+
+        if(questionText.getText().toString().isEmpty() == false){
+            Session session = new Session(getApplicationContext());
+            String userName = session.getUsername();
+            HashMap<String, String> item = new HashMap<String, String>();
+            item.put("User", userName);
+            item.put("Question",questionText.getText().toString());
+            listSend.add(item);
+            //Long exposicionId = session.getExpoId();
+            customeAdapter = new QACustomeAdapter(QuestionsActivity.this,listSend);
+            questionsList.setAdapter(customeAdapter);
+            try {
+                JSONObject obj = new JSONObject();
+                JSONObject response = new JSONObject();
+
+                obj.put(PREGUNTA, questionText.getText().toString());
+                obj.put(USUARIOID, session.getUserId());
+                obj.put(EXPOSICIONID, 1);
+                constants.executePostPutRequest(obj, Volley.newRequestQueue(this), 1, QUESTION_PATH, getApplicationContext(), 2);
+            }catch (Exception e){
+                throw new Exception(e.getMessage());
+            }
+
+        }else{
+            Log.d("Nooo",questionText.getText().toString());
+        }
 
     }
 }

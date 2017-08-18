@@ -96,14 +96,24 @@ public class WelcomeActivity extends AppCompatActivity
             }
         });
 
-//        Button standList = (Button) findViewById(R.id.buttonStands);
-//        assert standList != null;
-//        expoList.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent intent = new Intent(WelcomeActivity.this, ListStandActivity.class);
-//                startActivity(intent); stadisticsButton
-//            }
-//        });
+        FloatingActionButton goQA = (FloatingActionButton) findViewById(R.id.QAFloatingButton);
+        assert goQA != null;
+        goQA.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(WelcomeActivity.this, ListQAActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        FloatingActionButton goTL = (FloatingActionButton) findViewById(R.id.timelineButton);
+        assert goTL != null;
+        goTL.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(WelcomeActivity.this, TimeLineActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
 
