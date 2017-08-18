@@ -8,20 +8,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blueexpo"
+        android:backgroundTint="@color/caldroid_white"
         android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/calendar1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/blueexpo"
-            android:backgroundTint="@color/blueexpo"
+            android:background="@color/caldroid_white"
+            android:backgroundTint="@color/caldroid_white"
             android:orientation="vertical"></LinearLayout>
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:visibility="invisible" />
 
         <ListView
             android:id="@+id/listView"
-            android:layout_width="98dp"
-            android:layout_height="216dp"
+            android:layout_width="352dp"
+            android:layout_height="240dp"
             android:layout_gravity="center_horizontal"
             android:background="@color/caldroid_white"
             android:foregroundGravity="center"
